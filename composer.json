@@ -29,7 +29,7 @@
         "joomla/coding-standards": "~3.0@alpha"
     },
     "scripts": {
-        "check": "phpcs --standard=vendor/Joomla/coding-standards/Joomla pcz_vimeo.php --exclude=Generic.PHP.DisallowShortOpenTag --extensions=php --ignore=vendor .",
+        "check": "phpcs --standard=vendor/Joomla/coding-standards/Joomla --ignore=build,vendor .",
         "build": "composer archive --format zip --dir build"
     },
     "scripts-descriptions": {
