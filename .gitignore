@@ -1,0 +1,15 @@
+##
+# Gitignore
+#
+# @link http://git-scm.com/docs/gitignore
+##
+
+# Builds
+/build
+
+# Components
+/vendor
+/composer.lock
+
+# Notes
+NOTES.md

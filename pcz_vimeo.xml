@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="plugin" version="3.7.0" group="fields" method="upgrade">
+	<name>plg_fields_pcz_vimeo</name>
+	<author>Piotr Konieczny</author>
+	<creationDate>May 2021</creationDate>
+	<copyright>Copyright (C) 2021 Piotr Konieczny. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>hello@piotr.cz</authorEmail>
+	<authorUrl>piotr.cz</authorUrl>
+	<version>1.0.0-alpha.1</version>
+	<description>PLG_FIELDS_PCZ_VIMEO_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="pcz_vimeo">pcz_vimeo.php</filename>
+		<folder>language</folder>
+		<folder>params</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<media folder="media" destination="plg_fields_pcz_vimeo">
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+		<filename>joomla.asset.json</filename>
+	</media>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_fields_pcz_vimeo.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_fields_pcz_vimeo.sys.ini</language>
+	</languages>
+
+	<!-- Update servers-->
+	<!--
+	<updateservers>
+		<server
+			type="extension"
+			name="plg_fields_pcz_vimeo Update Site"
+			priority="1"
+		>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/master/update.xml</server>
+	</updateservers>
+	-->
+
+	<!-- Configuration -->
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<!-- Aspect ratio -->
+				<field
+					name="aspect_ratio"
+					type="list"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_ASPECT_RATIO_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_ASPECT_RATIO_DESC"
+					default="16-9"
+					filter="string"
+					validate="options"
+				>
+					<option value="16-9">16:9</option>
+					<option value="3-2">3:2</option>
+					<option value="4-3">4:3</option>
+				</field>
+
+				<!-- More info -->
+				<field
+					type="note"
+					class="alert alert-info"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_MOREINFO_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_MOREINFO_DESC"
+				/>
+
+				<!-- autopause -->
+				<field
+					name="vp_autopause"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_AUTOPAUSE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_AUTOPAUSE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- autoplay -->
+				<field
+					name="vp_autoplay"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_AUTOPLAY_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_AUTOPLAY_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- backround -->
+				<field
+					name="vp_background"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_BACKGROUND_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_BACKGROUND_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- byline -->
+				<field
+					name="vp_byline"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_BYLINE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_BYLINE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- color -->
+				<field
+					name="vp_color"
+					type="color"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_COLOR_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_COLOR_DESC"
+					default="#00adef"
+					filter="color"
+				/>
+
+				<!-- controls -->
+				<field
+					name="vp_controls"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_CONTROLS_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_CONTROLS_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- dnt -->
+				<field
+					name="vp_dnt"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_DNT_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_DNT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- loop -->
+				<field
+					name="vp_loop"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_LOOP_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_LOOP_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- muted -->
+				<field
+					name="vp_muted"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_MUTED_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_MUTED_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- pip -->
+				<field
+					name="vp_pip"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PIP_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PIP_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- playsinline -->
+				<field
+					name="vp_pip"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PLAYSINLINE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PLAYSINLINE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- portrait -->
+				<field
+					name="vp_portrait"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PORTRAIT_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PORTRAIT_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- quality -->
+				<field
+					name="vp_quality"
+					type="list"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_QUALITY_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_QUALITY_DESC"
+					default="auto"
+					validate="options"
+				>
+					<option value="auto">JGLOBAL_AUTO</option>
+					<option value="240p">240p</option>
+					<option value="360p">360p</option>
+					<option value="540p">540p</option>
+					<option value="720p">720p</option>
+					<option value="1080p">1080p</option>
+					<option value="2k">2k</option>
+					<option value="4k">4k</option>
+				</field>
+
+				<!-- speed -->
+				<field
+					name="vp_speed"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_SPEED_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_SPEED_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- texttrack -->
+				<field
+					name="vp_texttrack"
+					type="text"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_TEXTTRACK_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_TEXTTRACK_DESC"
+					hint="en"
+				/>
+
+				<!-- title -->
+				<field
+					name="vp_title"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_TITLE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_TITLE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- transparent -->
+				<field
+					name="vp_transparent"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_TRANSPARENT_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_TRANSPARENT_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

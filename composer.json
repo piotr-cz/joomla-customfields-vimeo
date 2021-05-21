@@ -1,0 +1,44 @@
+{
+    "name": "piotr-cz/joomla-plugin-fields-pcz_vimeo",
+    "type": "joomla-plugin",
+    "description": "Joomla! Vimeo Custom Field Plugin",
+    "keywords": [
+        "Joomla",
+        "Plugin",
+        "Custom Fields",
+        "Vimeo"
+    ],
+    "homepage": "https://github.com/piotr-cz/joomla-customfields-vimeo",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Piotr Konieczny",
+            "email": "hello@piotr.cz",
+            "homepage": "https://piotr.cz"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/piotr-cz/joomla-customfields-vimeo/issues"
+    },
+    "require": {
+        "php": "^5.6|^6|^8",
+        "composer/installers": "~1.0",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "require-dev": {
+        "joomla/coding-standards": "~3.0@alpha"
+    },
+    "scripts": {
+        "check": "phpcs --standard=vendor/Joomla/coding-standards/Joomla pcz_vimeo.php --exclude=Generic.PHP.DisallowShortOpenTag --extensions=php --ignore=vendor .",
+        "build": "composer archive --format zip --dir build"
+    },
+    "scripts-descriptions": {
+        "build": "Build release"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "installer-name": "fields/pcz_vimeo"
+    }
+}
