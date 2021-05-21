@@ -29,16 +29,10 @@ if ($value == '')
 	return;
 }
 
-// Create UID (not used atm)
-$elementUid = sprintf('plg_fields_%s:%s:%d', $field->type, $context, $field->id);
 $vimeoParams = PlgFieldsPcz_Vimeo::getVimeoParams($fieldParams);
 ?>
-<div
-	class="pcz_vimeo-video pcz_vimeo-video--aspect-ratio-<?php echo $fieldParams->get('aspect_ratio', '16-9') ?>"
-	data-vimeo-id="<?php echo htmlspecialchars($value) ?>"
->
+<div class="pcz_vimeo-video pcz_vimeo-video--aspect-ratio-<?php echo $fieldParams->get('aspect_ratio', '16-9') ?>">
 	<iframe
-		id="<?php echo $elementUid ?>"
 		class="pcz_vimeo-video__element"
 		src="https://player.vimeo.com/video/<?php echo htmlspecialchars($value) ?>?<?php echo http_build_query($vimeoParams) ?>"
 		frameborder="0"

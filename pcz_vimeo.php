@@ -165,10 +165,6 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 			HTMLHelper::_('behavior.keepalive');
 			HTMLHelper::_('stylesheet', 'plg_fields_pcz_vimeo/pcz_vimeo.css', array('version' => '1.0.0-alpha.1', 'relative' => true));
 
-			// HTMLHelper::_('script', 'plg_fields_pcz_vimeo/pcz_vimeo.js', array('version' => '1.0.0-alpha.1', 'relative' => true));
-			// HTMLHelper::_('script', 'plg_fields_pcz_vimeo/player.min.js', array('version' => '2.15.0', 'relative' => true));
-			// $document->addScriptDeclaration('window.addEventListener("load", function() { })');
-
 			return;
 		}
 
@@ -183,19 +179,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 
 		$wa
 			->useScript('keepalive')
-			->useStyle('plg_fields_pcz_vimeo.templates')
-
-			// ->useScript('plg_fields_pcz_vimeo.templates')
-			// ->useScript('@vimeo/player')
-			/*
-			// Note: Element uid constructed from $field->type, $context, $field->id
-			->addInlineScript('window.addEventListener("load", function() { }',
-				['name' => 'inline.plg.fields.pcz_vimeo'],
-				['type' => 'module'],
-				['@vimeo/player']
-			)
-			// */
-		;
+			->useStyle('plg_fields_pcz_vimeo.templates');
 	}
 
 	/**

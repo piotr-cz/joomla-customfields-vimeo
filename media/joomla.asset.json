@@ -7,22 +7,6 @@
   "assets": [
     {
       "name": "plg_fields_pcz_vimeo.templates",
-      "type": "script",
-      "uri": "plg_fields_pcz_vimeo/pcz_vimeo.js",
-      "version": "1.0.0-alpha.1",
-      "dependencies": [
-        "@vimeo/player"
-      ],
-      "attributes": {}
-    },
-    {
-      "name": "@vimeo/player",
-      "type": "script",
-      "uri": "https://player.vimeo.com/api/player.js",
-      "version": "2.15.0"
-    },
-    {
-      "name": "plg_fields_pcz_vimeo.templates",
       "type": "style",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo.css",
       "version": "1.0.0-alpha.1"
