@@ -30,12 +30,18 @@
     },
     "scripts": {
         "check": "phpcs --standard=vendor/Joomla/coding-standards/Joomla --ignore=build,vendor .",
-        "build": "composer archive --format zip --dir build"
+        "build": "composer archive",
+        "build-hashes": [
+            "composer archive --file plg_fields_pcz_vimeo --quiet",
+            "@php -r \"echo sprintf('sha384: %s', hash_file('sha384', 'build/plg_fields_pcz_vimeo.zip'));\""
+        ]
     },
     "scripts-descriptions": {
         "build": "Build release"
     },
     "config": {
+        "archive-format": "zip",
+        "archive-dir": "./build",
         "sort-packages": true
     },
     "extra": {
