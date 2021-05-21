@@ -5,7 +5,7 @@ This plugin lets you create new fields of type 'Vimeo' in any extensions where c
 ## Requirements
 
 - Joomla 3.7+
-- PHP 5.6
+- PHP 7.1+
 
 ## Installation
 

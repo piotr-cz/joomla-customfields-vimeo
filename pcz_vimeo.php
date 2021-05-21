@@ -102,11 +102,11 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 	 * @inheritdoc
 	 *
 	 * @param   string    $context  The context.
-	 * @param   stdclass  $item     The item.
-	 * @param   stdclass  $field    The field.
+	 * @param   stdClass  $item     The item.
+	 * @param   stdClass  $field    The field.
 	 * @return  string
 	 */
-	public function onCustomFieldsPrepareField($context, $item, $field)
+	public function onCustomFieldsPrepareField($context, $item, $field): string
 	{
 		// Skip when not inside article (example values: 'com_content.category'|'com_content.article')
 		$pageContext = vsprintf(
@@ -190,7 +190,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 	 *
 	 * @see [Vimeo: Using Player Parameters]{@link https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameters
 	 */
-	public static function getVimeoParams(Registry $fieldParams)
+	public static function getVimeoParams(Registry $fieldParams): array
 	{
 		// Default Vimeo player parameters
 		$defaultVimeoParams = [
