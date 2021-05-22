@@ -9,7 +9,7 @@
 		<folder>fields</folder>
 		<client>site</client>
 		<version>1.0.0-alpha.1</version>
-		<infourl title="Vimeo Custom Field">https://github.com/piotr-cz/joomla-customfields-vimeo/blob/master/README.md</infourl>
+		<infourl title="Vimeo Custom Field">https://github.com/piotr-cz/joomla-customfields-vimeo/blob/main/README.md</infourl>
 		<downloads>
 			<downloadurl
 				type="full"

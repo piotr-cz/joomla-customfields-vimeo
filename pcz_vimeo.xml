@@ -34,7 +34,7 @@
 			type="extension"
 			name="plg_fields_pcz_vimeo Update Site"
 			priority="1"
-		>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/master/update.xml</server>
+		>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/update.xml</server>
 	</updateservers>
 	-->
 
