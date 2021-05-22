@@ -8,7 +8,7 @@
 		<folder>fields</folder>
 		<client>0</client>
 		<version>1.0.0-alpha.1</version>
-		<changelogurl>https://github.com/piotr-cz/joomla-customfields-vimeo/blob/main/changelog.xml</changelogurl>
+		<changelogurl>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/changelog.xml</changelogurl>
 		<infourl title="Vimeo Custom Field">https://github.com/piotr-cz/joomla-customfields-vimeo/blob/main/README.md</infourl>
 		<downloads>
 			<downloadurl

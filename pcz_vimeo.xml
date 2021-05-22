@@ -28,8 +28,7 @@
 	</languages>
 
 	<!-- Update servers-->
-	<!--
-	<changelogurl>https://github.com/piotr-cz/joomla-customfields-vimeo/blob/main/changelog.xml</changelogurl>
+	<changelogurl>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/changelog.xml</changelogurl>
 	<updateservers>
 		<server
 			type="extension"
@@ -37,7 +36,6 @@
 			priority="1"
 		>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/updates.xml</server>
 	</updateservers>
-	-->
 
 	<!-- Configuration -->
 	<config>
