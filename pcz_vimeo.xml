@@ -19,7 +19,6 @@
 
 	<media folder="media" destination="plg_fields_pcz_vimeo">
 		<folder>css</folder>
-		<folder>images</folder>
 		<filename>joomla.asset.json</filename>
 	</media>
 
