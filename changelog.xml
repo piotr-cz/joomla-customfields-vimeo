@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelogs>
+	<changelog>
+		<element>plg_fields_pcz_vimeo</element>
+		<type>plugin</type>
+		<version>1.0.0-alpha.1</version>
+		<addition>
+			<item>Initial release</item>
+		</addition>
+	</changelog>
+</changelogs>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <updates>
-	<!-- 1.0.0-alpha.1 -->
 	<update>
 		<name>plg_fields_pcz_vimeo</name>
 		<description>Joomla! Vimeo Custom Field - This plugin lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.</description>
@@ -14,11 +13,11 @@
 			<downloadurl
 				type="full"
 				format="zip"
-			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/refs/tags/v1.0.0-alpha.1.zip</downloadurl>
+			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/v1.0.0-alpha.1.zip</downloadurl>
 			<downloadurl
 				type="full"
 				format="tar.gz"
-			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/refs/tags/v1.0.0-alpha.1.tar.gz</downloadurl>
+			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/v1.0.0-alpha.1.tar.gz</downloadurl>
 		</downloads>
 		<tags>
 			<tag>alpha</tag>

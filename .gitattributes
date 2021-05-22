@@ -13,7 +13,10 @@
 .gitmodules export-ignore
 
 # Metadata
-/CHANGELOG.* export-ignore
+/CHANGELOG.md export-ignore
+/changelog.xml export-ignore
+/LICENSE export-ignore
+/README.md export-ignore
 
 # Artwork
 /artwork/ export-ignore
@@ -21,8 +24,8 @@
 /composer.json export-ignore
 /composer.lock export-ignore
 
-# Update server
-/update.xml export-ignore
+# Update manifest
+/updates.xml export-ignore
 
 # Archives
 /*.zip export-ignore
