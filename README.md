@@ -5,7 +5,7 @@ This plugin lets you create new fields of type 'Vimeo' in any extensions where c
 
 ## Requirements
 
-- Joomla 3.7+
+- Joomla 3.7+ or 4.0-beta.7+
 - PHP 7.1+
 
 
@@ -40,3 +40,12 @@ Custom field may be configured
     See _Vimeo admin panel > Videos > [video] > Advanced > Embed > Your details > Let users decide_
 
   - Some parameters are available only on Vimeo Plus account or higher (_Background_, _Color_, _Controls_, _Quality_, _Speed_).
+
+
+# Known issues
+
+## Joomla 4
+
+- Radio controls in plugin settings look different to Joomla 4 native ones.
+
+  This is a aide effect of having extension compatible with both J!3 & J!4.
