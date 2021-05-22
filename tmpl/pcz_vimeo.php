@@ -10,6 +10,9 @@
  * @see [Vimeo: oEmbed]{@link https://developer.vimeo.com/api/oembed}
  */
 
+use Joomla\CMS\Version;
+use Joomla\CMS\HTML\HTMLHelper;
+
 defined('_JEXEC') or die;
 
 /**
@@ -27,6 +30,25 @@ $value = $field->value;
 if ($value == '')
 {
 	return;
+}
+
+// Note: Assets are added to document during content events, even when layout is not displayed
+
+// Joomla 4.x
+if ((new Version)->isCompatible('4.0'))
+{
+	$wa = $this->app->getDocument()->getWebAssetManager();
+	$wa->getRegistry()->addExtensionRegistryFile('plg_fields_pcz_vimeo');
+
+	$wa
+		->useScript('keepalive')
+		->useStyle('plg_fields_pcz_vimeo.templates');
+}
+// Joomla 3.x
+else
+{
+	HTMLHelper::_('behavior.keepalive');
+	HTMLHelper::_('stylesheet', 'plg_fields_pcz_vimeo/pcz_vimeo.css', ['version' => '1.0.0-alpha.1', 'relative' => true]);
 }
 
 $vimeoParams = PlgFieldsPcz_Vimeo::getVimeoParams($fieldParams);

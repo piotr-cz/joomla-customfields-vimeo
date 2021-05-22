@@ -14,8 +14,6 @@
  */
 
 use Joomla\Registry\Registry;
-use Joomla\CMS\Version;
-use Joomla\CMS\HTML\HTMLHelper;
 
 defined('_JEXEC') or die;
 
@@ -96,90 +94,6 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		}
 
 		return $fieldNode;
-	}
-
-	/**
-	 * @inheritdoc
-	 *
-	 * @param   string    $context  The context.
-	 * @param   stdClass  $item     The item.
-	 * @param   stdClass  $field    The field.
-	 * @return  string
-	 */
-	public function onCustomFieldsPrepareField($context, $item, $field): string
-	{
-		// Skip when not inside article (example values: 'com_content.category'|'com_content.article')
-		$pageContext = vsprintf(
-			'%s.%s',
-			[
-				$this->app->input->get('option'),
-				$this->app->input->get('view'),
-			]
-		);
-
-		if (in_array($pageContext, ['com_content.category', 'com_user.category']))
-		{
-			return '';
-		}
-
-		return parent::onCustomFieldsPrepareField($context, $item, $field);
-	}
-
-	/**
-	 * @inheritdoc
-	 *
-	 * @return  void
-	 */
-	public function onBeforeCompileHead(): void
-	{
-		if (!$this->app->isClient('site'))
-		{
-			return;
-		}
-
-		// Get the document object.
-		$document = $this->app->getDocument();
-
-		if ($document->getType() !== 'html')
-		{
-			return;
-		}
-
-		// Skip when not inside article
-		$pageContext = vsprintf(
-			'%s.%s',
-			[
-				$this->app->input->get('option'),
-				$this->app->input->get('view'),
-			]
-		);
-
-		if (in_array($pageContext, ['com_content.category', 'com_user.category']))
-		{
-			return;
-		}
-
-		// Joomla 3.x
-		if (!(new Version)->isCompatible('4.0'))
-		{
-			HTMLHelper::_('behavior.keepalive');
-			HTMLHelper::_('stylesheet', 'plg_fields_pcz_vimeo/pcz_vimeo.css', array('version' => '1.0.0-alpha.1', 'relative' => true));
-
-			return;
-		}
-
-		// Joomla 4.x
-		$wa = $document->getWebAssetManager();
-
-		/*
-		 * Add extension registry file In media dir
-		 * Note: Version may be set only on manual WebAssetItem init
-		 */
-		$wa->getRegistry()->addExtensionRegistryFile('plg_fields_pcz_vimeo');
-
-		$wa
-			->useScript('keepalive')
-			->useStyle('plg_fields_pcz_vimeo.templates');
 	}
 
 	/**
