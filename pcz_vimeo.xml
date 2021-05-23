@@ -56,14 +56,6 @@
 					<option value="4:3">4:3</option>
 				</field>
 
-				<!-- More info -->
-				<field
-					type="note"
-					class="alert alert-info"
-					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_MOREINFO_LABEL"
-					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_MOREINFO_DESC"
-				/>
-
 				<!-- autopause -->
 				<field
 					name="vp_autopause"
@@ -308,6 +300,15 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
+
+				<!-- Legend -->
+				<field
+					name="legend"
+					type="note"
+					class="alert alert-info"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VIMEO_LEGEND_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VIMEO_LEGEND_DESC"
+				/>
 			</fieldset>
 		</fields>
 	</config>
