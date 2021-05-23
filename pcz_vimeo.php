@@ -85,7 +85,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		// Placeholder
 		if (!$fieldNode->getAttribute('hint'))
 		{
-			$fieldNode->setAttribute('hint', '000000000');
+			$fieldNode->setAttribute('hint', '524933864');
 		}
 
 		if (!$fieldNode->getAttribute('description'))
@@ -148,8 +148,6 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 			'texttrack'   => (int) $fieldParams->get('vp_texttrack', 0),
 			'title'       => (int) $fieldParams->get('vp_title', 1),
 			'transparent' => (int) $fieldParams->get('vp_transparent', 1),
-			// 'player_id'   => 0, // ??
-			// 'app_id'      => 0, // ??
 		];
 
 		// Remove query params when same as defaults
