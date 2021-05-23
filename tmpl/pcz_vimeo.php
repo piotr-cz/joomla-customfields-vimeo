@@ -53,7 +53,7 @@ else
 
 $vimeoParams = PlgFieldsPcz_Vimeo::getVimeoParams($fieldParams);
 ?>
-<div class="pcz_vimeo-video pcz_vimeo-video--aspect-ratio-<?php echo $fieldParams->get('aspect_ratio', '16-9') ?>">
+<div class="pcz_vimeo-video pcz_vimeo-video--aspect-ratio-<?php echo str_replace(':', '-', $fieldParams->get('aspect_ratio', '16:9')) ?>">
 	<iframe
 		class="pcz_vimeo-video__element"
 		src="https://player.vimeo.com/video/<?php echo htmlspecialchars($value) ?>?<?php echo http_build_query($vimeoParams) ?>"
