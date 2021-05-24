@@ -65,35 +65,94 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		}
 
 		/*
-		 * Set field type and filter
+		 * Set field type, filter and validation rule
 		 * @see https://docs.joomla.org/Special:MyLanguage/J3.x:Adding_custom_fields/Parameters_for_all_Custom_Fields
 		 * @see administrator/components/com_fields/src/Plugin/FieldsPlugin.php
 		 */
-		$fieldNode->setAttribute('type', 'number');
-		$fieldNode->setAttribute('filter', 'integer');
-		$fieldNode->setAttribute('min', 1);
-		$fieldNode->setAttribute('step', 1);
+		$fieldNode->setAttribute('type', 'url');
+		$fieldNode->setAttribute('filter', 'url');
+		$fieldNode->setAttribute('validate', 'url');
 
 		// Set field options if not filled in admin
 
 		// Label
 		if (!$fieldNode->getAttribute('label'))
 		{
-			$fieldNode->setAttribute('label', 'PLG_FIELDS_PCZ_VIMEO_VALUE_VIDEO_ID_LABEL');
+			$fieldNode->setAttribute('label', 'PLG_FIELDS_PCZ_VIMEO_VALUE_VIDEO_LINK_LABEL');
+		}
+
+		// Description
+		if (!$fieldNode->getAttribute('description'))
+		{
+			$fieldNode->setAttribute('description', 'PLG_FIELDS_PCZ_VIMEO_VALUE_VIDEO_LINK_DESC');
 		}
 
 		// Placeholder
 		if (!$fieldNode->getAttribute('hint'))
 		{
-			$fieldNode->setAttribute('hint', '524933864');
-		}
-
-		if (!$fieldNode->getAttribute('description'))
-		{
-			$fieldNode->setAttribute('description', 'PLG_FIELDS_PCZ_VIMEO_VALUE_VIDEO_ID_DESC');
+			$fieldNode->setAttribute('hint', 'https://vimeo.com/524933864');
 		}
 
 		return $fieldNode;
+	}
+
+	/**
+	 * Get Vimeo ID from URL
+	 *
+	 * @param   string  $fieldValue  Vimeo ID or Vimeo URL, ie 'https://vimeo.com/286898202'
+	 * @return  string
+	 */
+	public static function getVimeoId(string $fieldValue): ?string
+	{
+		if ($fieldValue == '')
+		{
+			return null;
+		}
+
+		// Legacy - allow Vime ID
+		if (is_numeric($fieldValue))
+		{
+			return $fieldValue;
+		}
+
+		/*
+		 * Parse URL by detecting URL scheme
+		 * @see https://developer.vimeo.com/api/oembed/videos#table-1
+		 */
+		$urlPath = parse_url($fieldValue, PHP_URL_PATH);
+		$urlPath = trim($urlPath, '/');
+
+		list ($firstSegment) = explode('/', $urlPath, 2);
+
+		switch ($firstSegment)
+		{
+			// Showcase
+			case 'album':
+				list ($albumId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'album/%d/video/%d/%s');
+				break;
+
+			// Channel
+			case 'channels':
+				list ($channelId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'channels/%d/%d/%s');
+				break;
+
+			// Group
+			case 'groups':
+				list ($groupId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'groups/%d/videos/%d/%s');
+				break;
+
+			// On Demand video
+			case 'ondemand':
+				list ($ondemandid, $vimeoId, $unlistedHash) = sscanf($urlPath, 'ondemand/%d/%d/%s');
+				break;
+
+			// A regular Vimeo video
+			default:
+				list ($vimeoId, $unlistedHash) = sscanf($urlPath, '%d/%s');
+				break;
+		}
+
+		return (string) $vimeoId;
 	}
 
 	/**

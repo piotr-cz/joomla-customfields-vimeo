@@ -25,9 +25,10 @@ defined('_JEXEC') or die;
  * @var  string $path                            Path to this layout file
  */
 
-$value = $field->value;
+/** @var string|null */
+$vimeoId = PlgFieldsPcz_Vimeo::getVimeoId($field->value);
 
-if ($value == '')
+if (!$vimeoId)
 {
 	return;
 }
@@ -56,7 +57,7 @@ $vimeoParams = PlgFieldsPcz_Vimeo::getVimeoParams($fieldParams);
 <div class="pcz_vimeo-video pcz_vimeo-video--aspect-ratio-<?php echo str_replace(':', '-', $fieldParams->get('aspect_ratio', '16:9')) ?>">
 	<iframe
 		class="pcz_vimeo-video__element"
-		src="https://player.vimeo.com/video/<?php echo htmlspecialchars($value) ?>?<?php echo http_build_query($vimeoParams) ?>"
+		src="https://player.vimeo.com/video/<?php echo $vimeoId ?>?<?php echo http_build_query($vimeoParams) ?>"
 		frameborder="0"
 		allow="autoplay; fullscreen; picture-in-picture"
 		allowfullscreen
