@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <updates>
+	<!--
+		Latest development snapshot
+		To allow update discoverability: Administrator > Global Configuration > Installer > Minimum Extension Stability > Development
+	-->
+	<update>
+		<name>Vimeo Custom Field Plugin (development snapshot)</name>
+		<description>Joomla! Vimeo Custom Field - This plugin lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.</description>
+		<element>pcz_vimeo</element>
+		<type>plugin</type>
+		<folder>fields</folder>
+		<client>site</client>
+		<version>99.0.0-alpha</version>
+		<changelogurl>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/changelog.xml</changelogurl>
+		<infourl title="Vimeo Custom Field">https://github.com/piotr-cz/joomla-customfields-vimeo/blob/main/README.md</infourl>
+		<downloads>
+			<downloadurl
+				type="full"
+				format="zip"
+			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/main.zip</downloadurl>
+			<downloadurl
+				type="full"
+				format="tar.gz"
+			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/main.tar.gz</downloadurl>
+		</downloads>
+		<tags>
+			<tag>dev</tag>
+		</tags>
+		<maintainer>Piotr Konieczny</maintainer>
+		<maintainerurl>https://piotr.cz</maintainerurl>
+		<targetplatform
+			name="joomla"
+			version="3.(7|8|9)|4.0"
+		/>
+		<php_minimum>7.1.0</php_minimum>
+	</update>
+	<!-- Alpha -->
 	<update>
 		<name>Vimeo Custom Field Plugin</name>
 		<description>Joomla! Vimeo Custom Field - This plugin lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.</description>
