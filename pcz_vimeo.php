@@ -71,7 +71,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		 */
 		$fieldNode->setAttribute('type', 'url');
 		$fieldNode->setAttribute('filter', 'url');
-		$fieldNode->setAttribute('validate', 'url');
+		$fieldNode->setAttribute('validate', 'Vimeovideolink');
 
 		// Set field options if not filled in admin
 
