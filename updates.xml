@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <updates>
 	<update>
-		<name>plg_fields_pcz_vimeo</name>
+		<name>Vimeo Custom Field Plugin</name>
 		<description>Joomla! Vimeo Custom Field - This plugin lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.</description>
 		<element>pcz_vimeo</element>
 		<type>plugin</type>
