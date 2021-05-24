@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+	See https://docs.joomla.org/Adding_changelog_to_your_manifest_file
+-->
 <changelogs>
+	<!-- Unreleased -->
+	<changelog>
+		<element>plg_fields_pcz_vimeo</element>
+		<type>plugin</type>
+		<version>99.0.0-alpha</version>
+	</changelog>
+	<!-- 1.0.0-alpha.1 -->
 	<changelog>
 		<element>plg_fields_pcz_vimeo</element>
 		<type>plugin</type>
