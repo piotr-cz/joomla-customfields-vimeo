@@ -56,6 +56,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 	 */
 	public function onCustomFieldsPrepareDom($field, DOMElement $parent, JForm $form): ?DOMElement
 	{
+		/** @var \DOMElement */
 		$fieldNode = parent::onCustomFieldsPrepareDom($field, $parent, $form);
 
 		if (!$fieldNode)
@@ -71,6 +72,9 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		$fieldNode->setAttribute('type', 'url');
 		$fieldNode->setAttribute('filter', 'url');
 		$fieldNode->setAttribute('validate', 'Vimeovideolink');
+
+		// Invalid field: Invalid Video link format
+		// $fieldNode->setAttribute('message', 'PLG_FIELDS_PCZ_VIMEO_VALUE_VIDEO_LINK_FIELD_INVALID');
 
 		// Set field options if not filled in admin
 
