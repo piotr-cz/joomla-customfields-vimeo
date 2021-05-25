@@ -33,9 +33,18 @@ class JFormRuleVimeovideolink extends UrlRule
 	 */
 	public function test(\SimpleXMLElement $element, $value, $group = null, Registry $input = null, Form $form = null)
 	{
+		// Parent tests
 		if (!parent::test($element, $value, $group, $input, $form))
 		{
 			return false;
+		}
+
+		// If the field is empty and not required, the field is valid.
+		$required = ((string) $element['required'] === 'true' || (string) $element['required'] === 'required');
+
+		if (!$required && empty($value))
+		{
+			return true;
 		}
 
 		$components = parse_url($value);
