@@ -23,13 +23,12 @@ JLoader::import('components.com_fields.libraries.fieldsplugin', JPATH_ADMINISTRA
 /**
  * Fields Vimeo Plugin
  * Available Site Events:
- * + oncustomfieldspreparefield
- * + oncontentaftertitle
- * + oncontentbeforedisplay
- * + oncontentafterdisplay
- * + onafterdispatch
- * + onbeforecompilehead
- * + onafterrender
+ * - onCustomFieldsBeforePrepareField
+ * - onCustomFieldsPrepareField
+ * - onCustomFieldsAfterPrepareField
+ * - onAfterDispatch
+ * - onBeforeCompilehead
+ * - onAfterRender
  *
  * @since  1.0.0-alpha.1
  */
