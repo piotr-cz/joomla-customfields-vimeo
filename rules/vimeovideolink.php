@@ -7,9 +7,10 @@
  * @license     GNU General Public License version 3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
+use Joomla\Registry\Registry;
+use Joomla\Uri\Uri;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Form\Rule\UrlRule;
-use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die;
 
@@ -47,67 +48,61 @@ class JFormRuleVimeovideolink extends UrlRule
 			return true;
 		}
 
-		$components = parse_url($value);
+		$uri = new Uri($value);
 
 		// Scheme
-		if ($components['scheme'] !== 'https')
+		if ($uri->getScheme() !== 'https')
 		{
 			return false;
 		}
 
 		// Host
-		if ($components['host'] !== 'vimeo.com')
+		if ($uri->getHost() !== 'vimeo.com')
 		{
 			return false;
 		}
 
 		// Port
-		if (isset($components['port']))
+		if ($uri->getPort())
 		{
 			return false;
 		}
 
 		// User
-		if (isset($components['user']))
+		if ($uri->getUser())
 		{
 			return false;
 		}
 
 		// Password
-		if (isset($components['pass']))
+		if ($uri->getPass())
 		{
 			return false;
 		}
 
 		// Path
-		if (empty($components['path']))
+		if (!$uri->getPath())
 		{
 			return false;
 		}
 
 		// Path params
-		$pathParams = static::getVimeoPathParams($components['path']);
+		$pathParams = static::getVimeoPathParams($uri->getPath());
 
 		// Failed to parse format
-		if (is_null($pathParams['vimeoId']))
-		{
-			return false;
-		}
-
-		// Non integer
 		if (!is_int($pathParams['vimeoId']))
 		{
 			return false;
 		}
 
 		// Query
-		if (isset($components['query']))
+		if ($uri->getQuery())
 		{
 			return false;
 		}
 
 		// Fragment
-		if (isset($components['fragment']))
+		if ($uri->getFragment())
 		{
 			return false;
 		}
@@ -142,17 +137,12 @@ class JFormRuleVimeovideolink extends UrlRule
 			return $value;
 		}
 
+		$uri = new Uri($value);
+
 		// Extract Vimeo ID + Unlisted hash
-		$urlPath = parse_url($value, PHP_URL_PATH);
-		$pathParams = static::getVimeoPathParams($urlPath);
+		$pathParams = static::getVimeoPathParams($uri->getPath());
 
 		// Failed to parse format
-		if (is_null($pathParams['vimeoId']))
-		{
-			return null;
-		}
-
-		// Non integer
 		if (!is_int($pathParams['vimeoId']))
 		{
 			return null;
@@ -162,7 +152,13 @@ class JFormRuleVimeovideolink extends UrlRule
 		$normalizedUrlPath = sprintf('/%s', implode('/', array_filter($pathParams)));
 
 		// Replace path
-		return str_replace($urlPath, $normalizedUrlPath, $value);
+		$uri->setPath($normalizedUrlPath);
+
+		// Drop query and fragment
+		$uri->setQuery(null);
+		$uri->setFragment(null);
+
+		return (string) $uri;
 	}
 
 	/**
