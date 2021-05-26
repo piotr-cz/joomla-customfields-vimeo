@@ -14,6 +14,7 @@
 		<filename plugin="pcz_vimeo">pcz_vimeo.php</filename>
 		<folder>language</folder>
 		<folder>params</folder>
+		<folder>rules</folder>
 		<folder>tmpl</folder>
 	</files>
 
