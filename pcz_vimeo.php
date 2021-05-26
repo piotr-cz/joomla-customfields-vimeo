@@ -64,13 +64,16 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 			return $fieldNode;
 		}
 
+		// Require helper for filter functions called by JForm validate.
+		JLoader::register('JFormRuleVimeovideolink', __DIR__ . '/rules/vimeovideolink.php');
+
 		/*
 		 * Set field type, filter and validation rule
 		 * @see https://docs.joomla.org/Special:MyLanguage/J3.x:Adding_custom_fields/Parameters_for_all_Custom_Fields
 		 * @see administrator/components/com_fields/src/Plugin/FieldsPlugin.php
 		 */
 		$fieldNode->setAttribute('type', 'url');
-		$fieldNode->setAttribute('filter', 'url');
+		$fieldNode->setAttribute('filter', 'JFormRuleVimeovideolink::filterVimeoVideoLink');
 		$fieldNode->setAttribute('validate', 'Vimeovideolink');
 
 		// Invalid field: Invalid Video link format
@@ -143,7 +146,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 			return null;
 		}
 
-		// Legacy - allow Vime ID
+		// Legacy - allow Vimeo ID
 		if (is_numeric($fieldValue))
 		{
 			return $fieldValue;

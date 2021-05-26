@@ -61,59 +61,152 @@ class JFormRuleVimeovideolink extends UrlRule
 			return false;
 		}
 
+		// Port
+		if (isset($components['port']))
+		{
+			return false;
+		}
+
+		// User
+		if (isset($components['user']))
+		{
+			return false;
+		}
+
+		// Password
+		if (isset($components['pass']))
+		{
+			return false;
+		}
+
+		// Path
 		if (empty($components['path']))
 		{
 			return false;
 		}
 
-		/*
-		 * Parse URL by detecting URL scheme
-		 * @see https://developer.vimeo.com/api/oembed/videos#table-1
-		 */
-		$urlPath = trim($components['path'], '/');
-
-		list ($firstSegment) = explode('/', $urlPath, 2);
-
-		switch ($firstSegment)
-		{
-			// Showcase
-			case 'album':
-				list ($albumId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'album/%d/video/%d/%s');
-				break;
-
-			// Channel
-			case 'channels':
-				list ($channelId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'channels/%d/%d/%s');
-				break;
-
-			// Group
-			case 'groups':
-				list ($groupId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'groups/%d/videos/%d/%s');
-				break;
-
-			// On Demand video
-			case 'ondemand':
-				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'ondemand/%d/%d/%s');
-				break;
-
-			// A regular video
-			default:
-				list ($vimeoId, $unlistedHash) = sscanf($urlPath, '%d/%s');
-				break;
-		}
+		// Path params
+		$pathParams = static::getVimeoPathParams($components['path']);
 
 		// Failed to parse format
-		if (is_null($vimeoId))
+		if (is_null($pathParams['vimeoId']))
 		{
 			return false;
 		}
 
 		// Non integer
-		if (!is_int($vimeoId))
+		if (!is_int($pathParams['vimeoId']))
+		{
+			return false;
+		}
+
+		// Query
+		if (isset($components['query']))
+		{
+			return false;
+		}
+
+		// Fragment
+		if (isset($components['fragment']))
 		{
 			return false;
 		}
 
 		return true;
+	}
+
+	/**
+	 * Custom filter/ sanitizer to normalize any Vimeo url to Regular vimeo video link
+	 *
+	 * @example
+	 * ```xml
+	 * <field filter="JFormRuleVimeovideolink::filterVimeoVideoLink" />
+	 * ```
+	 *
+	 * Class must be loaded manually bucausse Joomla Form doesn't to so
+	 * @example
+	 * ```php
+	 * // Require helper for filter functions called by JForm.
+	 * JLoader::register('JFormRuleVimeovideolink', __DIR__ . '/rules/vimeovideolink.php');
+	 * ```
+	 *
+	 * @param   string  $value  The string to filter
+	 * @return  string|null  The filtered string which will be set as a value or null on failure
+	 *
+	 * @see https://developer.vimeo.com/api/oembed/videos#table-1
+	 */
+	public static function filterVimeoVideoLink(string $value): ?string
+	{
+		if (empty($value))
+		{
+			return $value;
+		}
+
+		// Extract Vimeo ID + Unlisted hash
+		$urlPath = parse_url($value, PHP_URL_PATH);
+		$pathParams = static::getVimeoPathParams($urlPath);
+
+		// Failed to parse format
+		if (is_null($pathParams['vimeoId']))
+		{
+			return null;
+		}
+
+		// Non integer
+		if (!is_int($pathParams['vimeoId']))
+		{
+			return null;
+		}
+
+		// Create path with removing optional unlisted hash when null
+		$normalizedUrlPath = sprintf('/%s', implode('/', array_filter($pathParams)));
+
+		// Replace path
+		return str_replace($urlPath, $normalizedUrlPath, $value);
+	}
+
+	/**
+	 * Get Vimeo URL path parameters by detecting Vimeo URL scheme
+	 * @see https://developer.vimeo.com/api/oembed/videos#table-1
+	 *
+	 * @param   string  $urlPath  URL path component
+	 * @return  array
+	 */
+	protected static function getVimeoPathParams(string $urlPath): array
+	{
+		list ($firstSegment) = explode('/', ltrim($urlPath, '/'), 2);
+
+		switch ($firstSegment)
+		{
+			// Showcase
+			case 'album':
+				list ($albumId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/album/%d/video/%d/%s');
+				break;
+
+			// Channel
+			case 'channels':
+				list ($channelId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/channels/%d/%d/%s');
+				break;
+
+			// Group
+			case 'groups':
+				list ($groupId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/groups/%d/videos/%d/%s');
+				break;
+
+			// On Demand video
+			case 'ondemand':
+				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/ondemand/%d/%d/%s');
+				break;
+
+			// A regular video
+			default:
+				list ($vimeoId, $unlistedHash) = sscanf($urlPath, '/%d/%s');
+				break;
+		}
+
+		return [
+			'vimeoId' => $vimeoId,
+			'unlistedHash' => $unlistedHash,
+		];
 	}
 }
