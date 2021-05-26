@@ -2,12 +2,26 @@
 <form>
 	<fields name="fieldparams">
 		<fieldset name="fieldparams">
-			<!-- Spacer -->
+			<!-- Spacer 1 -->
 			<field
-				name="spacer"
+				name="spacer 1"
 				type="spacer"
 				hr="true"
 			/>
+
+			<!-- Disable on category view -->
+			<field
+				name="disable_on_category"
+				type="list"
+				label="PLG_FIELDS_PCZ_VIMEO_PARAMS_DISABLE_ON_CATEGORY_LABEL"
+				description="PLG_FIELDS_PCZ_VIMEO_PARAMS_DISABLE_ON_CATEGORY_DESC"
+				filter="string"
+				validate="options"
+			>
+				<option value="">COM_FIELDS_FIELD_USE_GLOBAL</option>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
 
 			<!-- Aspect ratio -->
 			<field
@@ -23,6 +37,13 @@
 				<option value="3:2">3:2</option>
 				<option value="4:3">4:3</option>
 			</field>
+
+			<!-- Spacer 2 -->
+			<field
+				name="spacer_2"
+				type="spacer"
+				hr="true"
+			/>
 
 			<!-- autopause -->
 			<field

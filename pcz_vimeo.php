@@ -100,6 +100,37 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 	}
 
 	/**
+	 * @inheritdoc
+	 *
+	 * @param   string    $context  The context.
+	 * @param   stdClass  $item     The item.
+	 * @param   stdClass  $field    The field.
+	 * @return  string|void
+	 */
+	public function onCustomFieldsPrepareField($context, $item, $field): ?string
+	{
+		// Check if the field should be processed by us
+		if (!$this->isTypeSupported($field->type))
+		{
+			return null;
+		}
+
+		// Merge the params from the plugin and field which has precedence
+		$fieldParams = clone $this->params;
+		$fieldParams->merge($field->fieldparams);
+
+		$componentView = $this->app->input->get('view');
+
+		// Skip on blog/ list layouts
+		if ($fieldParams->get('disable_on_category', 1) && $componentView === 'category')
+		{
+			return null;
+		}
+
+		return parent::onCustomFieldsPrepareField($context, $item, $field);
+	}
+
+	/**
 	 * Get Vimeo ID from URL
 	 *
 	 * @param   string  $fieldValue  Vimeo ID or Vimeo URL, ie 'https://vimeo.com/286898202'

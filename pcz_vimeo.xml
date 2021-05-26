@@ -41,6 +41,20 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
+				<!-- Disable on category view -->
+				<field
+					name="disable_on_category"
+					type="radio"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_DISABLE_ON_CATEGORY_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_DISABLE_ON_CATEGORY_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
 				<!-- Aspect ratio -->
 				<field
 					name="aspect_ratio"
@@ -55,6 +69,13 @@
 					<option value="3:2">3:2</option>
 					<option value="4:3">4:3</option>
 				</field>
+
+				<!-- Spacer 1 -->
+				<field
+					name="spacer 1"
+					type="spacer"
+					hr="true"
+				/>
 
 				<!-- autopause -->
 				<field
