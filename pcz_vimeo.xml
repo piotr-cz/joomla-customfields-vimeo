@@ -16,6 +16,7 @@
 		<folder>params</folder>
 		<folder>rules</folder>
 		<folder>tmpl</folder>
+		<filename>helper.php</filename>
 	</files>
 
 	<media folder="media" destination="plg_fields_pcz_vimeo">

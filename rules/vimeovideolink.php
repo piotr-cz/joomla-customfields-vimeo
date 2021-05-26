@@ -14,6 +14,9 @@ use Joomla\CMS\Form\Rule\UrlRule;
 
 defined('_JEXEC') or die;
 
+// Require helper
+JLoader::register('PlgFieldsPcz_VimeoHelper', __DIR__ . '/../helper.php');
+
 /**
  * JFormVimeolink for plg_fields_pcz_vimeo to make sure value is valid Vimeo video link
  *
@@ -87,7 +90,7 @@ class JFormRuleVimeovideolink extends UrlRule
 		}
 
 		// Path params
-		$pathParams = static::getVimeoPathParams($uri->getPath());
+		$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($uri->getPath());
 
 		// Failed to parse format
 		if (!is_int($pathParams['vimeoId']))
@@ -140,7 +143,7 @@ class JFormRuleVimeovideolink extends UrlRule
 		$uri = new Uri($value);
 
 		// Extract Vimeo ID + Unlisted hash
-		$pathParams = static::getVimeoPathParams($uri->getPath());
+		$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($uri->getPath());
 
 		// Failed to parse format
 		if (!is_int($pathParams['vimeoId']))
@@ -159,50 +162,5 @@ class JFormRuleVimeovideolink extends UrlRule
 		$uri->setFragment(null);
 
 		return (string) $uri;
-	}
-
-	/**
-	 * Get Vimeo URL path parameters by detecting Vimeo URL scheme
-	 * @see https://developer.vimeo.com/api/oembed/videos#table-1
-	 *
-	 * @param   string  $urlPath  URL path component
-	 * @return  array
-	 */
-	protected static function getVimeoPathParams(string $urlPath): array
-	{
-		list ($firstSegment) = explode('/', ltrim($urlPath, '/'), 2);
-
-		switch ($firstSegment)
-		{
-			// Showcase
-			case 'album':
-				list ($albumId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/album/%d/video/%d/%s');
-				break;
-
-			// Channel
-			case 'channels':
-				list ($channelId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/channels/%d/%d/%s');
-				break;
-
-			// Group
-			case 'groups':
-				list ($groupId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/groups/%d/videos/%d/%s');
-				break;
-
-			// On Demand video
-			case 'ondemand':
-				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/ondemand/%d/%d/%s');
-				break;
-
-			// A regular video
-			default:
-				list ($vimeoId, $unlistedHash) = sscanf($urlPath, '/%d/%s');
-				break;
-		}
-
-		return [
-			'vimeoId' => $vimeoId,
-			'unlistedHash' => $unlistedHash,
-		];
 	}
 }

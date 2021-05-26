@@ -15,6 +15,9 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 defined('_JEXEC') or die;
 
+// Require helper
+JLoader::register('PlgFieldsPcz_VimeoHelper', __DIR__ . '/../helper.php');
+
 /**
  * Layout variables (See Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin::onCustomFieldsPrepareField)
  * ----------------
@@ -26,7 +29,7 @@ defined('_JEXEC') or die;
  */
 
 /** @var string|null */
-$vimeoId = PlgFieldsPcz_Vimeo::getVimeoId($field->value);
+$vimeoId = PlgFieldsPcz_VimeoHelper::getVimeoId($field->value);
 
 if (!$vimeoId)
 {
@@ -52,7 +55,7 @@ else
 	HTMLHelper::_('stylesheet', 'plg_fields_pcz_vimeo/pcz_vimeo.css', ['version' => '1.0.0-alpha.1', 'relative' => true]);
 }
 
-$vimeoParams = PlgFieldsPcz_Vimeo::getVimeoParams($fieldParams);
+$vimeoParams = PlgFieldsPcz_VimeoHelper::getVimeoParams($fieldParams);
 ?>
 <div class="pcz_vimeo-video pcz_vimeo-video--aspect-ratio-<?php echo str_replace(':', '-', $fieldParams->get('aspect_ratio', '16:9')) ?>">
 	<iframe
