@@ -5,14 +5,14 @@
 <changelogs>
 	<!-- Unreleased -->
 	<changelog>
-		<element>plg_fields_pcz_vimeo</element>
-		<type>plugin</type>
+		<element>pkg_pcz_vimeo</element>
+		<type>package</type>
 		<version>99.0.0-alpha</version>
 	</changelog>
 	<!-- 1.0.0-alpha.1 -->
 	<changelog>
-		<element>plg_fields_pcz_vimeo</element>
-		<type>plugin</type>
+		<element>pkg_pcz_vimeo</element>
+		<type>package</type>
 		<version>1.0.0-alpha.1</version>
 		<addition>
 			<item>Initial release</item>
