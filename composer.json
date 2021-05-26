@@ -1,6 +1,6 @@
 {
     "name": "piotr-cz/joomla-plugin-fields-pcz_vimeo",
-    "type": "joomla-plugin",
+    "type": "project",
     "description": "Joomla! Vimeo Custom Field Plugin",
     "keywords": [
         "Joomla",
@@ -22,7 +22,6 @@
     },
     "require": {
         "php": "^7.1|^8",
-        "composer/installers": "~1.0",
         "squizlabs/php_codesniffer": "^3.6"
     },
     "require-dev": {
@@ -43,8 +42,5 @@
         "archive-format": "zip",
         "archive-dir": "./build",
         "sort-packages": true
-    },
-    "extra": {
-        "installer-name": "fields/pcz_vimeo"
     }
 }
