@@ -93,7 +93,7 @@ class JFormRuleVimeovideolink extends UrlRule
 
 			// On Demand video
 			case 'ondemand':
-				list ($ondemandid, $vimeoId, $unlistedHash) = sscanf($urlPath, 'ondemand/%d/%d/%s');
+				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'ondemand/%d/%d/%s');
 				break;
 
 			// A regular video

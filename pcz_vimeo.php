@@ -177,7 +177,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 
 			// On Demand video
 			case 'ondemand':
-				list ($ondemandid, $vimeoId, $unlistedHash) = sscanf($urlPath, 'ondemand/%d/%d/%s');
+				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, 'ondemand/%d/%d/%s');
 				break;
 
 			// A regular Vimeo video
