@@ -22,7 +22,7 @@ JLoader::register('PlgFieldsPcz_VimeoHelper', __DIR__ . '/../helper.php');
  *
  * @since  1.0.0-alpha.1
  */
-class JFormRuleVimeovideolink extends UrlRule
+class JFormRuleVimeoVideoLink extends UrlRule
 {
 	/**
 	 * @inheritdoc

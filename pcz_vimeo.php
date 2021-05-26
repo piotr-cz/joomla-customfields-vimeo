@@ -63,7 +63,7 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		}
 
 		// Require helper for filter functions called by JForm validate.
-		JLoader::register('JFormRuleVimeovideolink', __DIR__ . '/rules/vimeovideolink.php');
+		JLoader::register('JFormRuleVimeoVideoLink', __DIR__ . '/rules/vimeovideolink.php');
 
 		/*
 		 * Set field type, filter and validation rule
@@ -71,8 +71,8 @@ class PlgFieldsPcz_Vimeo extends FieldsPlugin
 		 * @see administrator/components/com_fields/src/Plugin/FieldsPlugin.php
 		 */
 		$fieldNode->setAttribute('type', 'url');
-		$fieldNode->setAttribute('filter', 'JFormRuleVimeovideolink::filterVimeoVideoLink');
-		$fieldNode->setAttribute('validate', 'Vimeovideolink');
+		$fieldNode->setAttribute('filter', 'JFormRuleVimeoVideoLink::filterVimeoVideoLink');
+		$fieldNode->setAttribute('validate', 'VimeoVideoLink');
 
 		// Invalid field: Invalid Video link format
 		// $fieldNode->setAttribute('message', 'PLG_FIELDS_PCZ_VIMEO_VALUE_VIDEO_LINK_FIELD_INVALID');
