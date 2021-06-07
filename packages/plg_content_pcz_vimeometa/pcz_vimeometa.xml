@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension version="3.7.0" type="plugin" group="content" method="upgrade">
+	<name>plg_content_pcz_vimeometa</name>
+	<author>Piotr Konieczny</author>
+	<creationDate>May 2021</creationDate>
+	<copyright>Copyright (C) 2021 Piotr Konieczny. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>hello@piotr.cz</authorEmail>
+	<authorUrl>http://piotr.cz</authorUrl>
+	<version>1.0.0-alpha.2</version>
+	<description>PLG_CONTENT_PCZ_VIMEOMETA_XML_DESCRIPTION</description>
+
+	<!-- Files -->
+	<files>
+		<filename plugin="pcz_vimeometa">pcz_vimeometa.php</filename>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<!-- Languages -->
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_pcz_vimeometa.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_pcz_vimeometa.sys.ini</language>
+	</languages>
+
+	<!-- Configuration -->
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<!-- Enable for category -->
+				<field
+					name="enable_category"
+					type="radio"
+					label="PLG_FIELD_PCZ_VIMEOMETA_PARAMS_ENABLE_CATEGORY_LABEL"
+					description="PLG_FIELD_PCZ_VIMEOMETA_PARAMS_ENABLE_CATEGORY_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- Enable for subcategories -->
+				<field
+					name="enable_subcategories"
+					type="radio"
+					label="PLG_FIELD_PCZ_VIMEOMETA_PARAMS_ENABLE_SUBCATEGORIES_LABEL"
+					description="PLG_FIELD_PCZ_VIMEOMETA_PARAMS_ENABLE_SUBCATEGORIES_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- Enable for articles -->
+				<field
+					name="enable_items"
+					type="radio"
+					label="PLG_FIELD_PCZ_VIMEOMETA_PARAMS_ENABLE_ITEMS_LABEL"
+					description="PLG_FIELD_PCZ_VIMEOMETA_PARAMS_ENABLE_ITEMS_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					validate="options"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- Indicator: True -->
+				<field
+					name="article_seen_indicator_true"
+					type="text"
+					label="PLG_FIELDS_PCZ_VIMEOMETA_PARAMS_ARTILE_SEEN_INDICATOR_TRUE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEOMETA_PARAMS_ARTILE_SEEN_INDICATOR_TRUE_DESC"
+					default=" ✓"
+					filter="string"
+					showon="enable_items:1"
+				/>
+
+				<!-- Indicator: false -->
+				<field
+					name="article_seen_indicator_false"
+					type="text"
+					label="PLG_FIELDS_PCZ_VIMEOMETA_PARAMS_ARTILE_SEEN_INDICATOR_FALSE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEOMETA_PARAMS_ARTILE_SEEN_INDICATOR_FALSE_DESC"
+					default=""
+					filter="string"
+					showon="enable_items:1"
+				/>
+
+				<!-- Categories to process -->
+				<field
+					name="filter_cat_ids"
+					type="categoryedit"
+					label="JCATEGORIES"
+					description="PLG_FIELDS_PCZ_VIMEOMETA_PARAMS_FILTER_CAT_IDS_DESC"
+					default=""
+					multiple="true"
+					extension="com_content"
+					addfieldpath="/administrator/components/com_categories/models/fields"
+				>
+				</field>
+
+				<!-- Allowed custom fields -->
+				<field
+					name="filter_field_ids"
+					type="sql"
+					label="JGLOBAL_FIELDS"
+					description="PLG_FIELDS_PCZ_VIMEOMETA_PARAMS_FILTER_FIELD_IDS_DESC"
+					multiple="true"
+					sql_select="id, title, type"
+					sql_from="#__fields"
+					sql_where="type = 'pcz_vimeo'"
+					sql_order="id ASC"
+					key_field="id"
+					value_field="title"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
