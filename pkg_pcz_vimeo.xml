@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.7" method="upgrade">
+	<name>pkg_pcz_vimeo</name>
+	<packagename>pcz_vimeo</packagename>
+	<version>1.0.0-alpha.2</version>
+	<creationDate>May 2021</creationDate>
+	<author>Piotr Konieczny</author>
+	<copyright>Copyright (C) 2021 Piotr Konieczny. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>hello@piotr.cz</authorEmail>
+	<authorUrl>htttp://piotr.cz</authorUrl>
+	<description>PKG_PCZ_VIMEO_XML_DESCRIPTION</description>
+	<packager>piotr_cz</packager>
+	<packagerUrl>http://piotr.cz</packagerUrl>
+	<blockChildUninstall>true</blockChildUninstall>
+
+	<files folder="packages">
+		<folder type="plugin" group="fields" id="pcz_vimeo">plg_fields_pcz_vimeo</folder>
+		<folder type="plugin" group="content" id="pcz_vimeometa">plg_content_pcz_vimeometa</folder>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.pkg_pcz_vimeo.sys.ini</language>
+	</languages>
+
+	<!-- Update servers-->
+	<changelogurl>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/changelog.xml</changelogurl>
+	<updateservers>
+		<server
+			type="extension"
+			name="Vimeo Custom Field Package"
+			priority="1"
+		>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/updates.xml</server>
+	</updateservers>
+</extension>

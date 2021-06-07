@@ -21,6 +21,7 @@
 
 	<media folder="media" destination="plg_fields_pcz_vimeo">
 		<folder>css</folder>
+		<folder>js</folder>
 		<filename>joomla.asset.json</filename>
 	</media>
 
@@ -29,20 +30,23 @@
 		<language tag="en-GB">en-GB/en-GB.plg_fields_pcz_vimeo.sys.ini</language>
 	</languages>
 
-	<!-- Update servers-->
-	<changelogurl>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/changelog.xml</changelogurl>
-	<updateservers>
-		<server
-			type="extension"
-			name="Vimeo Custom Field Plugin"
-			priority="1"
-		>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/updates.xml</server>
-	</updateservers>
-
 	<!-- Configuration -->
-	<config>
+	<config addfieldpath="plugins/fields/pcz_vimeo/fields">
 		<fields name="params">
 			<fieldset name="basic">
+				<!-- Finished videos store -->
+				<field
+					name="data_store"
+					type="finishedvideosstore"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_DATA_STORE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_DATA_STORE_DESC"
+					default=""
+					filter="integer"
+					validate="options"
+				>
+					<option value="">JOPTION_DO_NOT_USE</option>
+				</field>
+
 				<!-- Disable on category view -->
 				<field
 					name="disable_on_category"

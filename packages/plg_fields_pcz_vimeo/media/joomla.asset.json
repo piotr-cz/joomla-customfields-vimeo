@@ -10,6 +10,13 @@
       "type": "style",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo.css",
       "version": "1.0.0-alpha.1"
+    },
+    {
+      "name": "plg_fields_pcz_vimeo.templates",
+      "type": "script",
+      "uri": "plg_fields_pcz_vimeo/pcz_vimeo.es6.js",
+      "version": "1.0.0-alpha.2",
+      "attributes": {}
     }
   ]
 }
