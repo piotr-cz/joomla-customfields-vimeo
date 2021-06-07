@@ -9,7 +9,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>hello@piotr.cz</authorEmail>
 	<authorUrl>htttp://piotr.cz</authorUrl>
-	<description>PKG_PCZ_VIMEO_DESCRIPTION</description>
+	<description>PKG_PCZ_VIMEO_XML_DESCRIPTION</description>
 	<packager>piotr_cz</packager>
 	<packagerUrl>http://piotr.cz</packagerUrl>
 	<blockChildUninstall>true</blockChildUninstall>
