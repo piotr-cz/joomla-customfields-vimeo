@@ -288,6 +288,7 @@
 			/>
 		</fieldset>
 	</fields>
+	<!-- Overwrite field model params -->
 	<!--
 	<fields name="params">
 		<fieldset name="basic">
