@@ -31,6 +31,7 @@ class JFormFieldFinishedVideosStore extends JFormFieldList
 	 */
 	public function getOptions(): array
 	{
+		/** @var \JDatabaseDriver */
 		$db = Factory::getDbo();
 
 		// Get the database object and a new query object.
@@ -40,14 +41,14 @@ class JFormFieldFinishedVideosStore extends JFormFieldList
 		$query
 			->select('f.id AS value, f.title AS text')
 			->from('#__fields AS f')
-			// ->where('f.context = ' . $db->q('com_users.user'))
+			->where('f.context = ' . $db->q('com_users.user'))
 			->where('f.type = ' . $db->q('pcz_vimeo_datastore'))
 			->where('f.state = ' . $db->q('1'))
 			->order('f.title ASC');
 
 		// Respect access controls
 		$groups = implode(',', Factory::getUser()->getAuthorisedViewLevels());
-		$query->where($db->qn('access') . ' IN (' . $groups . ')');
+		$query->where('f.access IN (' . $groups . ')');
 
 		$db->setQuery($query);
 
