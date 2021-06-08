@@ -22,12 +22,14 @@ FormHelper::loadFieldClass('List');
 class JFormFieldFinishedVideosStore extends JFormFieldList
 {
 	/**
+	 * @var string
 	 * @inheritdoc
 	 */
 	protected $type = 'FinishedVideosStore';
 
 	/**
 	 * @inheritdoc
+	 * @return array
 	 */
 	public function getOptions(): array
 	{

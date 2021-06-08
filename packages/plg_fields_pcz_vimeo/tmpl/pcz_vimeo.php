@@ -67,9 +67,12 @@ else
 
 // J!4 & J!3
 $document->addScript('https://player.vimeo.com/api/player.js');
-$document->addScriptOptions('plg_fields_pcz_vimeo', [
-	'uri' => JRoute::_('index.php?option=com_ajax'),
-]);
+$document->addScriptOptions(
+	'plg_fields_pcz_vimeo',
+	[
+		'uri' => JRoute::_('index.php?option=com_ajax'),
+	]
+);
 
 $elementParams = [
 	'vimeoId' => $vimeoId,

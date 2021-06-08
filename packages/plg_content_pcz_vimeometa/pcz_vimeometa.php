@@ -64,10 +64,10 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	 *
 	 * Add indicator to article title
 	 *
-	 * @param   string                                        $context
-	 * @param   stdClass|\Joomla\CMS\Categories\CategoryNode  &$item
-	 * @param   \Joomla\Registry\Registry                     &$params
-	 * @param   integer                                       $page
+	 * @param   string                                        $context  Context
+	 * @param   stdClass|\Joomla\CMS\Categories\CategoryNode  $item     Item
+	 * @param   \Joomla\Registry\Registry                     $params   Item params
+	 * @param   integer                                       $page     Page number
 	 * @return  void
 	 */
 	public function onContentPrepare($context, &$item, &$params, $page = 0): void
@@ -146,7 +146,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			}
 		}
 		// Article
-		else if (property_exists($item, 'title'))
+		elseif (property_exists($item, 'title'))
 		{
 			if (!$this->params->get('enable_items', 1))
 			{
@@ -222,10 +222,10 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	/**
 	 * Add indicator to category page heading
 	 *
-	 * @param   string                                        $context
-	 * @param   stdClass|\Joomla\CMS\Categories\CategoryNode  &$item
-	 * @param   \Joomla\Registry\Registry                     $params
-	 * @param   integer                                       $page
+	 * @param   string                                        $context - Context
+	 * @param   stdClass|\Joomla\CMS\Categories\CategoryNode  $item    - Item
+	 * @param   \Joomla\Registry\Registry                     $params  - Item params
+	 * @param   integer                                       $page    - Page number
 	 * @return  string|null
 	 */
 	public function onContentBeforeDisplay($context, &$item, &$params, $page = 0): ?string
@@ -286,7 +286,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	 * TODO: Optimize for multiple calls
 	 * TODO: check access levels
 	 *
-	 * @param   \Joomla\CMS\Categories\CategoryNode  $categoryNode
+	 * @param   \Joomla\CMS\Categories\CategoryNode  $categoryNode  Category node
 	 * @return  integer[]
 	 */
 	protected function getVimeoIdsForCategory0(CategoryNode $categoryNode)
@@ -303,8 +303,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			->where('f.context = ' . $this->db->q('com_content.article'))
 			->where('f.type = ' . $this->db->q('pcz_vimeo'))
 			->where('a.catid = ' . $this->db->q($categoryNode->id))
-			->order('a.ordering ASC')
-		;
+			->order('a.ordering ASC');
 
 		$this->db->setQuery($selectQuery);
 
@@ -318,7 +317,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	 * Get Vimeo IDs for category items using native Joomla models
 	 *
 	 * @param   \Joomla\CMS\Categories\CategoryNode  $categoryNode  Page category node
-	 * @param   \Joomla\CMS\Categories\CategoryNode  [$child]       Get data Just for this one
+	 * @param   \Joomla\CMS\Categories\CategoryNode  $child         Get data Just for this one
 	 * @return  integer[]
 	 */
 	protected function getVimeoIdsForCategory(CategoryNode $categoryNode, CategoryNode $child = null): array
@@ -350,8 +349,8 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			$articlesModel->setState('filter.published', true);
 			$articlesModel->setState('load_tags', false);
 
-			// Access filter
-			$access     = !ComponentHelper::getParams('com_content')->get('show_noauth'); // Unauthorized content (bool)
+			// Access filter (Unauthorized content)
+			$access     = !ComponentHelper::getParams('com_content')->get('show_noauth');
 			$authorised = Access::getAuthorisedViewLevels(Factory::getUser()->id);
 			$articlesModel->setState('filter.access', $access);
 
@@ -369,10 +368,14 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			$articles = $articlesModel->getItems();
 
 			// Check access levels
-			if (!$access) {
-				$articles = array_filter($articles, function (object $item) use ($authorised): bool {
-					return in_array($item->access, $authorised);
-				});
+			if (!$access)
+			{
+				$articles = array_filter(
+					$articles,
+					function (object $item) use ($authorised): bool {
+						return in_array($item->access, $authorised);
+					}
+				);
 			}
 
 			if (empty($articles))
@@ -380,9 +383,12 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 				return [];
 			}
 
-			$articleIds = array_map(function (object $item): int {
-				return (int) $item->id;
-			}, $articles);
+			$articleIds = array_map(
+				function (object $item): int {
+					return (int) $item->id;
+				},
+				$articles
+			);
 
 			// Get field value for articles
 			$selectQuery = $this->db->getQuery(true);
@@ -393,8 +399,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 				->where('v.item_id IN (' . implode(', ', $articleIds) . ')')
 				->join('LEFT', '#__fields AS f ON v.field_id = f.id')
 				->where('f.context = ' . $this->db->q('com_content.article'))
-				->where('f.type = ' . $this->db->q('pcz_vimeo'))
-			;
+				->where('f.type = ' . $this->db->q('pcz_vimeo'));
 
 			// Filter by allowed field IDs
 			$allowedFieldIds = $this->params->get('filter_field_ids', []);
@@ -414,9 +419,8 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			// Map to map, skip articles without assigned video id
 			foreach ($articles as $item)
 			{
-				if (
-					array_key_exists($item->id, $itemToValue) &&
-					array_key_exists($item->catid, $map)
+				if (array_key_exists($item->id, $itemToValue)
+					&& array_key_exists($item->catid, $map)
 				)
 				{
 					$map[$item->catid][] = PlgFieldsPcz_VimeoHelper::getVimeoId($itemToValue[$item->id]);
@@ -442,7 +446,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	/**
 	 * Get finished videos for user
 	 *
-	 * @param   integer $dataStoreId
+	 * @param   integer  $dataStoreId  Data store ID
 	 * @return  integer[]
 	 */
 	protected function getSeenVimeoIds(int $dataStoreId): array
@@ -503,9 +507,9 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	/**
 	 * Check if category or any of it's parents is allowed
 	 *
-	 * @param  CategoryNode $categoryNode
-	 * @param  string[] $allowedCatIds
-	 * @return bool
+	 * @param   CategoryNode  $categoryNode   Category node
+	 * @param   string[]      $allowedCatIds  Allowed category IDs
+	 * @return  boolean
 	 */
 	protected static function isCategoryAllowed(CategoryNode $categoryNode, array $allowedCatIds): bool
 	{
@@ -521,7 +525,8 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			{
 				return true;
 			}
-		} while ($categoryNode = $categoryNode->getParent());
+		}
+		while ($categoryNode = $categoryNode->getParent());
 
 		return false;
 	}
@@ -551,8 +556,8 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	 * @param   string                 $path      Layout path
 	 * @param   boolean[]              $progress  Progress table
 	 * @param   string                 $type      One of 'category'|'subcategory'|'item'
-	 * @param   stdClass|CategoryNode  $item
-	 * @param   string                 $context
+	 * @param   stdClass|CategoryNode  $item      Item
+	 * @param   string                 $context   Context
 	 * @return  string
 	 */
 	protected function renderLayout(string $path, array $progress, string $type, $item, $context): string

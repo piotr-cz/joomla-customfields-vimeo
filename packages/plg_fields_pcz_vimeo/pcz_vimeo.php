@@ -133,7 +133,7 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 	 * TODO: Evaluate linking date store to default field (field -> data store relationship)
 	 *       Possoble problem with db query as it's set fieldparams which is a JSON object
 	 *
-	 * @param   stdClass  field - Data store field
+	 * @param   stdClass  $field - Data store field
 	 * @return  string[]
 	 */
 	public function getOptionsFromField($field): array
@@ -145,8 +145,7 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 			->from('#__fields_values AS v')
 			->join('LEFT', '#__fields AS f ON v.field_id = f.id')
 			->where('f.id <> ' . $this->db->q($field->id))
-			->where('f.type = ' . $this->db->q(static::TYPE_DEFAULT))
-		;
+			->where('f.type = ' . $this->db->q(static::TYPE_DEFAULT));
 
 		$this->db->setQuery($query);
 
@@ -166,25 +165,26 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 	 */
 	public function onCustomFieldsGetTypes(): array
 	{
-		// return parent::onCustomFieldsGetTypes();
-
 		$fieldTypes = parent::onCustomFieldsGetTypes();
 
 		$component = $this->app->input->get('option');
 		$fieldsContext = $this->app->input->get('context');
 
 		// Keep all types for users component or fields component with user context
-		if (
-			$component === 'com_users' ||
-			($component === 'com_fields' && $fieldsContext === 'com_users.user')
-		) {
+		if ($component === 'com_users'
+			|| ($component === 'com_fields' && $fieldsContext === 'com_users.user')
+		)
+		{
 			return $fieldTypes;
 		}
 
 		// Remove datastore on others contexts
-		return array_filter($fieldTypes, function (array $fieldType): bool {
-			return $fieldType['type'] !== static::TYPE_DATASTORE;
-		});
+		return array_filter(
+			$fieldTypes,
+			function (array $fieldType): bool {
+				return $fieldType['type'] !== static::TYPE_DATASTORE;
+			}
+		);
 	}
 
 	/**
@@ -222,6 +222,7 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 
 			ob_start();
 			include $path;
+
 			return ob_get_clean();
 		}
 
@@ -235,7 +236,7 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 	 * @return mixed
 	 * @throws \Exception
 	 */
-	public function onAjaxPcz_Vimeo()
+	public function onAjaxPcz_Vimeo() // phpcs:ignore Joomla.NamingConventions.ValidFunctionName
 	{
 		/*
 		 * Check X-CSRF-Token appended by Joomla.request
@@ -293,16 +294,21 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 
 		$insertQuery
 			->insert($this->db->qn('#__fields_values'))
-			->columns([
-				$this->db->qn('field_id'),
-				$this->db->qn('item_id'),
-				$this->db->qn('value'),
-			])
+			->columns(
+				[
+					$this->db->qn('field_id'),
+					$this->db->qn('item_id'),
+					$this->db->qn('value'),
+				]
+			)
+			// phpcs:disable PEAR.Functions.FunctionCallSignature
 			->values(implode(',', [
-				$this->db->q($dataStoreId),
-				$this->db->q($user->id),
-				$this->db->q($vimeoId),
-			]));
+					$this->db->q($dataStoreId),
+					$this->db->q($user->id),
+					$this->db->q($vimeoId),
+				])
+			);
+			// phpcs:enable PEAR.Functions.Generic.FunctionCallSignature
 
 		$this->db->setQuery($insertQuery);
 
