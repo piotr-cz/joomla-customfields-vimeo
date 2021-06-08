@@ -12,6 +12,7 @@
 
 	<files>
 		<filename plugin="pcz_vimeo">pcz_vimeo.php</filename>
+		<folder>fields</folder>
 		<folder>language</folder>
 		<folder>params</folder>
 		<folder>rules</folder>
