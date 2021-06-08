@@ -11,18 +11,24 @@ This plugin lets you create new fields of type 'Vimeo' in any extensions where c
 
 ## Installation
 
-1. Install:
-   Download [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest) and install using Extension Manager (_Extensions > Manage > Install > Upload Package File_)
+1. Install
 
-1. Enable Plugin
-   (_Extensions > Plugins > Fields - Pcz - Vimeo > Enable_)
+   - by pasting URL to zip file of [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest)  
+     *Extensions > Manage > Install > Install from URL*
+
+   - download [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest) and install using Extension Manager  
+     *Extensions > Manage > Install > Upload Package File*
+
+1. Enable Plugin  
+   *Extensions > Plugins > Fields - Pcz - Vimeo > Enable*
 
 
 ## Configuration
 
 Custom field may be configured
 
-- globally in plugin (_Extensions > Plugins > Fields - Pcz - Vimeo_)
+- globally in plugin  
+  *Extensions > Plugins > Fields - Pcz - Vimeo*
 
 - per each field
 
