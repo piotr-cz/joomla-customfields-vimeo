@@ -37,6 +37,10 @@ Custom field may be configured
 
 - Aspect ratio
 
+- Disable on category views
+
+- Finished videos data store
+
 - All Vimeo Player Parameters (See _Vimeo Help Center > [Using Player Parameters](https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameter)_)
 
   Notes:

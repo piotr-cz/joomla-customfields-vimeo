@@ -34,17 +34,19 @@
 	<config addfieldpath="plugins/fields/pcz_vimeo/fields">
 		<fields name="params">
 			<fieldset name="basic">
-				<!-- Finished videos store -->
+				<!-- Aspect ratio -->
 				<field
-					name="data_store"
-					type="finishedvideosstore"
-					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_DATA_STORE_LABEL"
-					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_DATA_STORE_DESC"
-					default=""
-					filter="integer"
+					name="aspect_ratio"
+					type="list"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_ASPECT_RATIO_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_ASPECT_RATIO_DESC"
+					default="16-9"
+					filter="string"
 					validate="options"
 				>
-					<option value="">JOPTION_DO_NOT_USE</option>
+					<option value="16:9">16:9</option>
+					<option value="3:2">3:2</option>
+					<option value="4:3">4:3</option>
 				</field>
 
 				<!-- Disable on category view -->
@@ -62,19 +64,17 @@
 					<option value="0">JNO</option>
 				</field>
 
-				<!-- Aspect ratio -->
+				<!-- Finished videos store -->
 				<field
-					name="aspect_ratio"
-					type="list"
-					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_ASPECT_RATIO_LABEL"
-					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_ASPECT_RATIO_DESC"
-					default="16-9"
-					filter="string"
+					name="data_store"
+					type="finishedvideosstore"
+					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_DATA_STORE_LABEL"
+					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_DATA_STORE_DESC"
+					default=""
+					filter="integer"
 					validate="options"
 				>
-					<option value="16:9">16:9</option>
-					<option value="3:2">3:2</option>
-					<option value="4:3">4:3</option>
+					<option value="">JOPTION_DO_NOT_USE</option>
 				</field>
 
 				<!-- Spacer 1 -->
