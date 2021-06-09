@@ -10,6 +10,7 @@
 	<version>1.0.0-alpha.1</version>
 	<description>PLG_FIELDS_PCZ_VIMEO_XML_DESCRIPTION</description>
 
+	<!-- Files -->
 	<files>
 		<filename plugin="pcz_vimeo">pcz_vimeo.php</filename>
 		<folder>fields</folder>
@@ -20,12 +21,14 @@
 		<filename>helper.php</filename>
 	</files>
 
+	<!-- Media -->
 	<media folder="media" destination="plg_fields_pcz_vimeo">
 		<folder>css</folder>
 		<folder>js</folder>
 		<filename>joomla.asset.json</filename>
 	</media>
 
+	<!-- Languages -->
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.plg_fields_pcz_vimeo.ini</language>
 		<language tag="en-GB">en-GB/en-GB.plg_fields_pcz_vimeo.sys.ini</language>

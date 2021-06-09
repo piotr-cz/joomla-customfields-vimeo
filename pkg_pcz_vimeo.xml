@@ -14,16 +14,18 @@
 	<packagerUrl>http://piotr.cz</packagerUrl>
 	<blockChildUninstall>true</blockChildUninstall>
 
+	<!-- Files -->
 	<files folder="packages">
 		<folder type="plugin" group="fields" id="pcz_vimeo">plg_fields_pcz_vimeo</folder>
 		<folder type="plugin" group="content" id="pcz_vimeometa">plg_content_pcz_vimeometa</folder>
 	</files>
 
+	<!-- Languages -->
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.pkg_pcz_vimeo.sys.ini</language>
 	</languages>
 
-	<!-- Update servers-->
+	<!-- Update servers -->
 	<changelogurl>https://raw.githubusercontent.com/piotr-cz/joomla-customfields-vimeo/main/changelog.xml</changelogurl>
 	<updateservers>
 		<server
