@@ -104,6 +104,7 @@
 					multiple="true"
 					extension="com_content"
 					addfieldpath="/administrator/components/com_categories/models/fields"
+					addfieldprefix="Joomla\Component\Categories\Administrator\Field"
 				>
 				</field>
 
