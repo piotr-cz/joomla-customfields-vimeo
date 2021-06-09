@@ -331,7 +331,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			$articlesModel = BaseDatabaseModel::getInstance('Articles', 'ContentModel', array('ignore_request' => true));
 
 			/*
-			// J!4
+			// J!4.1
 			// @var \Joomla\Component\Content\Site\Model\ArticlesModel $model
 			$articlesModel = Factory::getApplication()->bootComponent('com_content')->getMVCFactory()
 				->createModel('Articles', 'Site', ['ignore_request' => true]);

@@ -13,6 +13,7 @@
  * use Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin;
  */
 
+use Joomla\CMS\Version;
 use Joomla\CMS\Factory;
 
 defined('_JEXEC') or die;
@@ -84,6 +85,12 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 			// It's a list of predefined values so don't have to validate or sanitize
 			$fieldNode->setAttribute('type', 'list');
 			$fieldNode->setAttribute('multiple', 'true');
+
+			// J!4
+			if ((new Version)->isCompatible('4.0'))
+			{
+				$fieldNode->setAttribute('layout', 'joomla.form.field.list-fancy-select');
+			}
 
 			return $fieldNode;
 		}
