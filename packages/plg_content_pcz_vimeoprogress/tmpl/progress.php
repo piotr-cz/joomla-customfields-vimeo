@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Plugin
- * @subpackage  Fields.pcz_vimeometa
+ * @subpackage  Fields.pcz_vimeoprogress
  *
  * @copyright   Copyright (C) 2021 Piotr Konieczny. All rights reserved.
  * @license     GNU General Public License version 3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt
@@ -12,10 +12,10 @@ defined('_JEXEC') or die;
 /**
  * Layout variables
  * -----------------
- * @var   PlgContentPcz_VimeoMeta  $this
- * @var   bool[]                   $progress
- * @var   string                   $type
- * @var   string                   $context
+ * @var   PlgContentPcz_VimeoProgress  	                $this
+ * @var   bool[]                                        $progress
+ * @var   string                                        $type
+ * @var   string                                        $context
  * @var   stdClass|\Joomla\CMS\Categories\CategoryNode  $item
  */
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Plugin
- * @subpackage  Fields.pcz_vimeometa
+ * @subpackage  Fields.pcz_vimeoprogress
  *
  * @copyright   Copyright (C) 2021 Piotr Konieczny. All rights reserved.
  * @license     GNU General Public License version 3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt
@@ -22,7 +22,7 @@ defined('_JEXEC') or die;
 JLoader::register('PlgFieldsPcz_VimeoHelper', JPATH_PLUGINS . '/fields/pcz_vimeo/helper.php');
 
 /**
- * Vimeo meta
+ * Vimeo progress
  * Note: This plugin may not be needed, as content events are triggered for the fields plugin
  * TODO: Show Watch next episodes button
  *
@@ -43,7 +43,7 @@ JLoader::register('PlgFieldsPcz_VimeoHelper', JPATH_PLUGINS . '/fields/pcz_vimeo
  * Category   | com_content.category   | stdClass
  * Article    | com_content.article:   | stdClass
  */
-class PlgContentPcz_VimeoMeta extends CMSPlugin
+class PlgContentPcz_VimeoProgress extends CMSPlugin
 {
 	public const TYPE_CATEGORY = 'category';
 	public const TYPE_SUBCATEGORY = 'subcategory';
@@ -117,7 +117,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 			$seenVimeoIds = $this->getSeenVimeoIds($dataStoreId);
 
 			// Get the path for layout file
-			$layoutPath = JPluginHelper::getLayoutPath('content', 'pcz_vimeometa', 'progress');
+			$layoutPath = JPluginHelper::getLayoutPath('content', 'pcz_vimeoprogress', 'progress');
 
 			foreach ($categoryNode->getChildren(true) as $child)
 			{
@@ -274,7 +274,7 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 		}
 
 		// Get the path for layout file
-		$layoutPath = JPluginHelper::getLayoutPath('content', 'pcz_vimeometa', 'progress');
+		$layoutPath = JPluginHelper::getLayoutPath('content', 'pcz_vimeoprogress', 'progress');
 
 		return $this->renderLayout($layoutPath, $progress, static::TYPE_CATEGORY, $item, $context);
 	}

@@ -17,7 +17,7 @@
 	<!-- Files -->
 	<files folder="packages">
 		<folder type="plugin" group="fields" id="pcz_vimeo">plg_fields_pcz_vimeo</folder>
-		<folder type="plugin" group="content" id="pcz_vimeometa">plg_content_pcz_vimeometa</folder>
+		<folder type="plugin" group="content" id="pcz_vimeprogress">plg_content_pcz_vimeprogress</folder>
 	</files>
 
 	<!-- Languages -->
