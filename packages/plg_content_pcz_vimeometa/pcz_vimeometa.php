@@ -280,40 +280,6 @@ class PlgContentPcz_VimeoMeta extends CMSPlugin
 	}
 
 	/**
-	 * Get vimeo ids for each article
-	 * @deprecated
-	 *
-	 * TODO: Optimize for multiple calls
-	 * TODO: check access levels
-	 *
-	 * @param   \Joomla\CMS\Categories\CategoryNode  $categoryNode  Category node
-	 * @return  integer[]
-	 */
-	protected function getVimeoIdsForCategory0(CategoryNode $categoryNode)
-	{
-		$selectQuery = $this->db->getQuery(true);
-		$selectQuery
-			// Get all field values
-			->select('v.value')
-			->from('#__fields_values AS v')
-			->join('LEFT', '#__fields AS f ON v.field_id = f.id')
-			// For articles from category
-			->join('LEFT', '#__content AS a ON v.item_id = a.id')
-			// Filter only fields with context of com_content.article
-			->where('f.context = ' . $this->db->q('com_content.article'))
-			->where('f.type = ' . $this->db->q('pcz_vimeo'))
-			->where('a.catid = ' . $this->db->q($categoryNode->id))
-			->order('a.ordering ASC');
-
-		$this->db->setQuery($selectQuery);
-
-		$vimeoUrlsInCategory = $this->db->loadColumn();
-		$vimeoIdsInCategory = array_map('PlgFieldsPcz_VimeoHelper::getVimeoId', $vimeoUrlsInCategory);
-
-		return $vimeoIdsInCategory;
-	}
-
-	/**
 	 * Get Vimeo IDs for category items using native Joomla models
 	 *
 	 * @param   \Joomla\CMS\Categories\CategoryNode  $categoryNode  Page category node
