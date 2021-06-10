@@ -18,10 +18,6 @@
 				type="full"
 				format="zip"
 			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/main.zip</downloadurl>
-			<downloadurl
-				type="full"
-				format="tar.gz"
-			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/main.tar.gz</downloadurl>
 		</downloads>
 		<tags>
 			<tag>dev</tag>
@@ -49,10 +45,6 @@
 				type="full"
 				format="zip"
 			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/v1.0.0-alpha.1.zip</downloadurl>
-			<downloadurl
-				type="full"
-				format="tar.gz"
-			>https://github.com/piotr-cz/joomla-customfields-vimeo/archive/v1.0.0-alpha.1.tar.gz</downloadurl>
 		</downloads>
 		<tags>
 			<tag>alpha</tag>
