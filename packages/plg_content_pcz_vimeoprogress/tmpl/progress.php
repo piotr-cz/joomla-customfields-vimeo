@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Layout variables
  * -----------------
- * @var   PlgContentPcz_VimeoProgress  	                $this
+ * @var   PlgContentPcz_VimeoProgress                   $this
  * @var   bool[]                                        $progress
  * @var   string                                        $type
  * @var   string                                        $context
@@ -29,6 +29,6 @@ $finishedCount = count(array_filter($progress));
 		value="<?php echo $finishedCount ?>"
 		title="<?php echo sprintf('%d/ %d', $finishedCount, $allCount) ?>"
 	>
-		<?php echo ($allCount ? $finishedCount / $allCount : 0) * 100 ?>%
+		<?php echo $allCount ? round($finishedCount / $allCount * 100) : 0 ?>%
 	</progress>
 </div>
