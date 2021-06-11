@@ -26,6 +26,7 @@ JLoader::register('PlgFieldsPcz_VimeoHelper', __DIR__ . '/helper.php');
 
 /**
  * Fields Vimeo Plugin
+ *
  * Available Site Events:
  * - onCustomFieldsBeforePrepareField
  * - onCustomFieldsPrepareField

@@ -22,11 +22,10 @@ defined('_JEXEC') or die;
 JLoader::register('PlgFieldsPcz_VimeoHelper', JPATH_PLUGINS . '/fields/pcz_vimeo/helper.php');
 
 /**
- * Vimeo progress
+ * Content Vimeo Progress Plugin
+ *
  * Note: This plugin may not be needed, as content events are triggered for the fields plugin
  * TODO: Show Watch next episodes button
- *
- * @since  1.0.0-alpha.2
  *
  * Available Events:
  * - onContentPrepareForm Note: Doesn't fire for com_users.profile|com_users.user, only com_admin.profile
@@ -42,6 +41,8 @@ JLoader::register('PlgFieldsPcz_VimeoHelper', JPATH_PLUGINS . '/fields/pcz_vimeo
  * Category   | com_content.categories | CategoryNode
  * Category   | com_content.category   | stdClass
  * Article    | com_content.article:   | stdClass
+ *
+ * @since  1.0.0-alpha.2
  */
 class PlgContentPcz_VimeoProgress extends CMSPlugin
 {
