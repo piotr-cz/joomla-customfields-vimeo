@@ -267,6 +267,8 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 			throw new \LogicException('Unauthorized');
 		}
 
+		// Note: Skipping user permission check (Edit Custom Field Value) and assume creating is allowed for all authenticated users
+
 		$dataStoreId = $this->params->get('data_store');
 
 		if (!$dataStoreId)

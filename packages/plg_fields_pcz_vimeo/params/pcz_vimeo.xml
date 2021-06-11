@@ -288,20 +288,4 @@
 			/>
 		</fieldset>
 	</fields>
-	<!-- Overwrite field model params -->
-	<!--
-	<fields name="params">
-		<fieldset name="basic">
-			<field
-				name="class"
-				type="textarea"
-				label="COM_FIELDS_FIELD_CLASS_LABEL"
-				description="COM_FIELDS_FIELD_CLASS_DESC"
-				class="input-xxlarge"
-				size="40"
-				default="btn-group"
-			/>
-		</fieldset>
-	</fields>
-	-->
 </form>

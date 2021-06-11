@@ -4,9 +4,4 @@
 		<fieldset name="fieldparams">
 		</fieldset>
 	</fields>
-
-	<fields name="params">
-		<fieldset name="basic">
-		</fieldset>
-	</fields>
 </form>

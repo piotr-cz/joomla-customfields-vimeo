@@ -84,7 +84,7 @@ To add finished Videos data store, add new field with type *Vimeo Datastore*
 
 1. Type: *Vimeo Datastore*
 
-1. Optional: If you want to hide data from users, you may restrict *Access* level, *Options > Editable in: Site* or *Options > Display when Read-Only: No*
+1. Optional: If you want to hide data from users, you may restrict *Access* level, set *Options > Editable in: Site* or set *Options > Display when Read-Only: No*
 
 Now set up Vimeo Fields plugin to use the storage you just created:
 
