@@ -1,4 +1,4 @@
-// xts-check
+// @ts-check
 
 /**
  * @package     Joomla.Plugin
@@ -9,15 +9,14 @@
  */
 
 /**
- * @typedef { import('@vimeo/player').default } Vimeo
- * @typedef { import('../../system/js/core-uncompressed.js').default } Joomla
+ * @typedef { import('@vimeo/player').Player } Player
  */
 
-((document, Joomla) => {
+((document, Joomla, Vimeo) => {
   'use strict';
 
   /**
-   *
+   * Fire Joomla request to ajax component
    * @param {string} vimeoId
    * @param {string} url
    * @param {function} onSuccess
@@ -34,7 +33,7 @@
         ignoreMessages: '1',
         vimeoId: vimeoId,
       }),
-      onSuccess: (responseText) => {
+      onSuccess: (/** @type {string} */responseText) => {
         /** @type {{success: boolean, message: string|null, messages: null, data: any[]}} */
         const response = JSON.parse(responseText)
 
@@ -43,6 +42,9 @@
         }
       })
 
+  /**
+   * Initialize
+   */
   const onBoot = () => {
     // Check dependencies
     if (!Joomla || !Vimeo) {
@@ -58,11 +60,14 @@
     }
 
     // Create player instances and attach ended events
+
+    /** @type {NodeListOf<HTMLIFrameElement>}  */
     const iframes = document.querySelectorAll('[data-plg_fields_pcz_vimeo]')
 
     for (const iframe of iframes.values()) {
       /** @type {{vimeoId: string, logEnded: boolean}} */
       const params = JSON.parse(iframe.dataset.plg_fields_pcz_vimeo)
+      /** @type {Player} */
       const player = new Vimeo.Player(iframe)
 
       if (params.logEnded) {
@@ -77,4 +82,5 @@
   }
 
   document.addEventListener('DOMContentLoaded', onBoot, { once: true })
-})(document, Joomla);
+// @ts-expect-error
+})(document, Joomla, Vimeo);
