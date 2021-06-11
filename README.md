@@ -13,8 +13,8 @@ Package contains following extensions:
   This plugin adds ability to indicate seen Vimeo videos for logged-in users.  
   It does it by adding
   
-  - an indicator to an article title `✓`
-  - progress bar after category title `██░░░`
+  - an indicator to an article title (✓)
+  - progress bar after category title (▓▓░░░)
 
 
 ## Requirements
@@ -74,19 +74,23 @@ Custom field may be configured
 ### Configuration
 
 First of all, you have create storage where data about videos seen by users will be saved to.
-Plugin doesn't create it's own storage (like database table) but uses custom fields in user context.
+Plugin doesn't create it's own storage (like database table) but uses custom fields within user context.
 
 To add finished Videos data store, add new field with type *Vimeo Datastore*
 
-1. *Admin > Users > Fields > New*
+1. *Users > Fields > New*
+
+1. Title: *Videos seen by users* (or any custom name)
+
 1. Type: *Vimeo Datastore*
-1. Name: *Videos seen by users*
-1. Save
+
+1. Optional: If you want to hide data from users, you may restrict *Access* level, *Options > Editable in: Site* or *Options > Display when Read-Only: No*
 
 Now set up Vimeo Fields plugin to use the storage you just created:
 
 1. *Extensions > Plugins > Fields - Pcz - Vimeo*
-1. Finished videos data store: *Videos seen by users*
+
+1. Finished videos data store: *Videos seen by users* (or custom name you entered)
 
 
 ### Available settings
@@ -97,9 +101,9 @@ Now set up Vimeo Fields plugin to use the storage you just created:
 
 - Enable for articles
 
-- Article seen idicator
+  - Article seen idicator
 
-- Article unseen indicator
+  - Article unseen indicator
 
 - Categories to process
 
