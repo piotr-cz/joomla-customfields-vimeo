@@ -1,6 +1,20 @@
-# Joomla! Vimeo Custom Field Plugin
+# Joomla! Vimeo Custom Field Package
 
-This plugin lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.
+This plugins lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.
+
+Package contains following extensions:
+
+- **Vimeo Fields plugin**
+
+  This plugin adds ability to add Vimeo to an article (or any other supported content) by defining Vimeo URL.
+
+- **Vimeo Progress Content plugin**
+
+  This plugin adds ability to indicate seen Vimeo videos for logged-in users.  
+  It does it by adding
+  
+  - an indicator to an article title `✓`
+  - progress bar after category title `██░░░`
 
 
 ## Requirements
@@ -16,14 +30,17 @@ This plugin lets you create new fields of type 'Vimeo' in any extensions where c
    - by pasting URL to zip file of [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest)  
      *Extensions > Manage > Install > Install from URL*
 
-   - download [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest) and install using Extension Manager  
+   - by downloading [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest) and installing it using Extension Manager  
      *Extensions > Manage > Install > Upload Package File*
 
 1. Enable Plugin  
-   *Extensions > Plugins > Fields - Pcz - Vimeo > Enable*
+   *Extensions > Plugins > Fields - Pcz - Vimeo > Enable*  
+   *Extensions > Plugins > Content - Pcz - Vimeo Progress > Enable*
 
 
-## Configuration
+## Vimeo Fields plugin
+
+### Configuration
 
 Custom field may be configured
 
@@ -33,7 +50,7 @@ Custom field may be configured
 - per each field
 
 
-### Available settings
+#### Available settings
 
 - Aspect ratio
 
@@ -52,10 +69,47 @@ Custom field may be configured
     See _Vimeo admin panel > Videos > [video] > Advanced > Embed > Your details > Let users decide_
 
 
+## Vimeo progress Content plugin
+
+### Configuration
+
+First of all, you have create storage where data about videos seen by users will be saved to.
+Plugin doesn't create it's own storage (like database table) but uses custom fields in user context.
+
+To add finished Videos data store, add new field with type *Vimeo Datastore*
+
+1. *Admin > Users > Fields > New*
+1. Type: *Vimeo Datastore*
+1. Name: *Videos seen by users*
+1. Save
+
+Now set up Vimeo Fields plugin to use the storage you just created:
+
+1. *Extensions > Plugins > Fields - Pcz - Vimeo*
+1. Finished videos data store: *Videos seen by users*
+
+
+### Available settings
+
+- Enable for category
+
+- Enable for subcategories
+
+- Enable for articles
+
+- Article seen idicator
+
+- Article unseen indicator
+
+- Categories to process
+
+- Fields to process
+
+
 # Known issues
 
 ## Joomla 4
 
 - Radio controls in plugin settings look different to Joomla 4 native ones.
 
-  This is a aide effect of having extension compatible with both J!3 & J!4.
+  This is a aide effect of having extension compatible with both Jooma 3 and Joomla 4.
