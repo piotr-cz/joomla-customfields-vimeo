@@ -16,7 +16,21 @@
       "type": "script",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo.es6.js",
       "version": "1.0.0-alpha.2",
-      "attributes": {}
+      "attributes": {
+        "defer": true
+      },
+      "dependencies": [
+        "@vimeo/player"
+      ]
+    },
+    {
+      "name": "@vimeo/player",
+      "type": "script",
+      "uri": "https://player.vimeo.com/api/player.js",
+      "version": null,
+      "attributes": {
+        "defer": true
+      }
     }
   ]
 }
