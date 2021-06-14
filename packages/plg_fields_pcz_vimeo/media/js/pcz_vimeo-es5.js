@@ -12,7 +12,7 @@
  * @typedef { import('@vimeo/player').Player } Player
  */
 
-((document, Joomla, Vimeo) => {
+(function(document, Joomla, Vimeo) {
   'use strict';
 
   /**
@@ -22,7 +22,7 @@
    * @param {function} onSuccess
    * @return
    */
-  const request = (url, vimeoId, onSuccess) =>
+  const request = function(url, vimeoId, onSuccess) {
     Joomla.request({
       url,
       method: 'POST',
@@ -33,7 +33,7 @@
         ignoreMessages: '1',
         vimeoId: vimeoId,
       }),
-      onSuccess: (/** @type {string} */responseText) => {
+      onSuccess: function(/** @type {string} */responseText) {
         /** @type {{success: boolean, message: string|null, messages: null, data: any[]}} */
         const response = JSON.parse(responseText)
 
@@ -41,11 +41,12 @@
           onSuccess(response.data)
         }
       })
+    }
 
   /**
    * Initialize
    */
-  const onBoot = () => {
+  const onBoot = function() {
     // Check dependencies
     if (!Joomla || !Vimeo) {
       throw new Error('core.js was not properly initialised');
@@ -60,27 +61,28 @@
     }
 
     // Create player instances and attach ended events
+    /** @type {HTMLIFrameElement[]} */
+    const iframes = [].slice.call(document.querySelectorAll('[data-plg_fields_pcz_vimeo]'))
 
-    /** @type {NodeListOf<HTMLIFrameElement>}  */
-    const iframes = document.querySelectorAll('[data-plg_fields_pcz_vimeo]')
-
-    for (const iframe of iframes.values()) {
+    iframes.forEach(function (iframe) {
       /** @type {{vimeoId: string, logEnded: boolean}} */
       const params = JSON.parse(iframe.dataset.plg_fields_pcz_vimeo)
       /** @type {Player} */
       const player = new Vimeo.Player(iframe)
 
       if (params.logEnded) {
-        const handleVideoEnded = () =>
-          request(options.uri, params.vimeoId, () =>
+        const handleVideoEnded = function() {
+          request(options.uri, params.vimeoId, function() {
             player.off('ended', handleVideoEnded)
-          )
+          })
+        }
 
         player.on('ended', handleVideoEnded)
       }
-    }
+    })
   }
 
+  // Boot after all deferred scripts are executed
   document.addEventListener('DOMContentLoaded', onBoot, { once: true })
 // @ts-expect-error
 })(document, Joomla, Vimeo);
