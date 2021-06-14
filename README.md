@@ -4,22 +4,23 @@ This plugins lets you create new fields of type 'Vimeo' in any extensions where 
 
 Package contains following extensions:
 
-- **Vimeo Fields plugin**
+- **[Vimeo Fields plugin](#vimeo-fields-plugin)**
 
   This plugin adds ability to add Vimeo to an article (or any other supported content) by defining Vimeo URL.
 
-- **Vimeo Progress Content plugin**
+- **[Vimeo Progress Content plugin](#vimeo-progress-content-plugin)**
 
   This plugin adds ability to indicate seen Vimeo videos for logged-in users.  
   It does it by adding
   
   - an indicator to an article title (✓)
-  - progress bar after category title (▓▓░░░)
+  - progress bar after category and subcategory title (▓▓░░░)
 
 
 ## Requirements
 
 - Joomla 3.7+ or 4.0-beta.7+
+
 - PHP 7.1+
 
 
@@ -33,16 +34,16 @@ Package contains following extensions:
    - by downloading [latest release](https://github.com/piotr-cz/joomla-customfields-vimeo/releases/latest) and installing it using Extension Manager  
      *Extensions > Manage > Install > Upload Package File*
 
-1. Enable Plugin  
+1. Enable Plugins  
    *Extensions > Plugins > Fields - Pcz - Vimeo > Enable*  
-   *Extensions > Plugins > Content - Pcz - Vimeo Progress > Enable*
+   *Extensions > Plugins > Content - Pcz - Vimeo Progress > Enable* (Optional)
 
 
 ## Vimeo Fields plugin
 
 ### Configuration
 
-Custom field may be configured
+Custom field may be configured either
 
 - globally in plugin  
   *Extensions > Plugins > Fields - Pcz - Vimeo*
