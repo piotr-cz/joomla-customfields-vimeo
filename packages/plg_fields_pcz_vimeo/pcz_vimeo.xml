@@ -235,7 +235,7 @@
 
 				<!-- playsinline -->
 				<field
-					name="vp_pip"
+					name="vp_playsinline"
 					type="radio"
 					label="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PLAYSINLINE_LABEL"
 					description="PLG_FIELDS_PCZ_VIMEO_PARAMS_VP_PLAYSINLINE_DESC"
