@@ -111,9 +111,17 @@ Now set up Vimeo Fields plugin to use the storage you just created:
 - Fields to process
 
 
-# Known issues
+## Testing pre-releases
 
-## Joomla 4
+To allow updates for latest commit switch  
+*Global Configuration > Installer > Minimum Extension Stability* to *Development*.
+
+Available extension update will show up as version *99.0.0-alpha* and install as of latest commit from main branch of this repository.
+
+
+## Known issues
+
+### Joomla 4
 
 - Radio controls in plugin settings look different to Joomla 4 native ones.
 

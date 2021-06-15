@@ -2,7 +2,7 @@
 <updates>
 	<!--
 		Latest development snapshot
-		To allow update discoverability: Administrator > Global Configuration > Installer > Minimum Extension Stability > Development
+		To allow update discoverability: Administrator > Global Configuration > Installer > Minimum Extension Stability: Development
 	-->
 	<update>
 		<name>Vimeo Custom Field Package (development snapshot)</name>
