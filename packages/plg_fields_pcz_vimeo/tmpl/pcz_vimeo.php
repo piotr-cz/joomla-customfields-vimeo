@@ -12,6 +12,7 @@
 
 use Joomla\CMS\Version;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
 use Joomla\Uri\Uri;
 
 defined('_JEXEC') or die;
@@ -76,7 +77,7 @@ else
 $document->addScriptOptions(
 	'plg_fields_pcz_vimeo',
 	[
-		'uri' => JRoute::_('index.php?option=com_ajax'),
+		'uri' => Route::_('index.php?option=com_ajax'),
 	]
 );
 
