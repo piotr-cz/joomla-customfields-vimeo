@@ -28,7 +28,7 @@
       "name": "@vimeo/player",
       "type": "script",
       "uri": "https://player.vimeo.com/api/player.js",
-      "version": null,
+      "version": "",
       "attributes": {
         "defer": true
       }
