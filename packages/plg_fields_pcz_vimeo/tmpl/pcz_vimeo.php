@@ -12,6 +12,7 @@
 
 use Joomla\CMS\Version;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\Uri\Uri;
 
 defined('_JEXEC') or die;
 
@@ -40,6 +41,9 @@ if (!$vimeoId)
 $document = $this->app->getDocument();
 
 $vimeoParams = PlgFieldsPcz_VimeoHelper::getVimeoParams($fieldParams);
+
+$vimeoSrc = new URI(sprintf('https://player.vimeo.com/video/%s', $vimeoId));
+$vimeoSrc->setQuery($vimeoParams);
 
 // Note: Assets are added to document during content events, even when layout is not displayed
 
@@ -85,7 +89,7 @@ $elementParams = [
 	<iframe
 		data-plg_fields_pcz_vimeo='<?php echo json_encode($elementParams) ?>'
 		class="pcz_vimeo-video__element"
-		src="https://player.vimeo.com/video/<?php echo $vimeoId ?>?<?php echo http_build_query($vimeoParams) ?>"
+		src="<?php echo $vimeoSrc ?>"
 		frameborder="0"
 		allow="autoplay; fullscreen; picture-in-picture"
 		allowfullscreen
