@@ -16,6 +16,7 @@ use Joomla\CMS\Categories\CategoryNode;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Access\Access;
+use Joomla\CMS\Language\Text;
 
 defined('_JEXEC') or die;
 
@@ -55,7 +56,7 @@ class PlgContentPcz_VimeoProgress extends CMSPlugin
 	protected $app = null;
 
 	/**
-	 * @var \JDatabaseDriver
+	 * @var \Joomla\Database\DatabaseDriver
 	 */
 	protected $db = null;
 
@@ -118,7 +119,7 @@ class PlgContentPcz_VimeoProgress extends CMSPlugin
 			$seenVimeoIds = $this->getSeenVimeoIds($dataStoreId);
 
 			// Get the path for layout file
-			$layoutPath = JPluginHelper::getLayoutPath('content', 'pcz_vimeoprogress', 'progress');
+			$layoutPath = PluginHelper::getLayoutPath('content', 'pcz_vimeoprogress', 'progress');
 
 			foreach ($categoryNode->getChildren(true) as $child)
 			{
@@ -211,7 +212,7 @@ class PlgContentPcz_VimeoProgress extends CMSPlugin
 			$isDone = !empty(array_filter($progress));
 
 			// Note: Don't use fallback values to allow empty strings
-			$item->title .= JText::_($isDone
+			$item->title .= Text::_($isDone
 				? $this->params->get('article_seen_indicator_true')
 				: $this->params->get('article_seen_indicator_false')
 			);
@@ -275,7 +276,7 @@ class PlgContentPcz_VimeoProgress extends CMSPlugin
 		}
 
 		// Get the path for layout file
-		$layoutPath = JPluginHelper::getLayoutPath('content', 'pcz_vimeoprogress', 'progress');
+		$layoutPath = PluginHelper::getLayoutPath('content', 'pcz_vimeoprogress', 'progress');
 
 		return $this->renderLayout($layoutPath, $progress, static::TYPE_CATEGORY, $item, $context);
 	}
