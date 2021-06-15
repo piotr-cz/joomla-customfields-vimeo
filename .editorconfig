@@ -16,6 +16,10 @@ insert_final_newline = true
 indent_style = space
 indent_size = 2
 
+[joomla.asset.json]
+indent_style = space
+indent_size = 2
+
 [*.md]
 indent_style = space
 trim_trailing_whitespace = false
