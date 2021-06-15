@@ -62,10 +62,10 @@ else
 	HTMLHelper::_('behavior.core');
 	HTMLHelper::_('behavior.keepalive');
 
-	$document->addScript('https://player.vimeo.com/api/player.js');
+	$document->addScript('https://player.vimeo.com/api/player.js', ['version' => null], ['defer' => true]);
 
 	HTMLHelper::_('stylesheet', 'plg_fields_pcz_vimeo/pcz_vimeo.css', ['version' => '1.0.0-alpha.1', 'relative' => true]);
-	HTMLHelper::_('script', 'plg_fields_pcz_vimeo/pcz_vimeo-es5.js', ['version' => '1.0.0-alpha.1', 'relative' => true]);
+	HTMLHelper::_('script', 'plg_fields_pcz_vimeo/pcz_vimeo.es6.js', ['version' => '1.0.0-alpha.1', 'relative' => true], ['defer' => true]);
 }
 
 // J!4 & J!3
