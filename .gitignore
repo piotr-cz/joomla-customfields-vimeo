@@ -4,6 +4,9 @@
 # @link http://git-scm.com/docs/gitignore
 ##
 
+# Meta
+/.vscode
+
 # Builds
 /build
 
