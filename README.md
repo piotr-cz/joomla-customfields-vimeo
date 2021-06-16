@@ -13,8 +13,9 @@ Package contains following extensions:
   This plugin adds ability to indicate seen Vimeo videos for logged-in users.  
   It does it by adding
   
-  - an indicator to an article title (✓)
-  - progress bar after category and subcategory title (▓▓░░░)
+  - symbol indicator after an article title (✓)
+
+  - progress bar after category and subcategory title (<progress max="5" value="2" title="2/ 5">40%</progress>)
 
 
 ## Requirements
