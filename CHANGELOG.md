@@ -6,10 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2021-05-21
+## [1.0.0] - 2021-06-18
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.0...v1.0.1
+[Unreleased]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/piotr-cz/joomla-customfields-vimeo/releases/tag/v1.0.0

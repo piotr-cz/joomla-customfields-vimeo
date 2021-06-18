@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "plg_fields_pcz_vimeo",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "Pcz Vimeo",
   "license": "GPL-2.0-or-later",
   "assets": [
@@ -9,13 +9,13 @@
       "name": "plg_fields_pcz_vimeo.templates",
       "type": "style",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo.css",
-      "version": "1.0.0-alpha.1"
+      "version": "1.0.0"
     },
     {
       "name": "plg_fields_pcz_vimeo.templates",
       "type": "script",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo-es5.js",
-      "version": "1.0.0-alpha.2",
+      "version": "1.0.0",
       "attributes": {
         "nomodule": true,
         "defer": true
