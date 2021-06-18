@@ -1,5 +1,10 @@
 # Joomla! Vimeo Custom Field Package
 
+![GitHub release](https://img.shields.io/github/v/release/piotr-cz/joomla-customfields-vimeo)
+![Joomla 3](https://img.shields.io/badge/joomla-3.7+-007ec6.svg)
+![Joomla 4](https://img.shields.io/badge/joomla-4.0--beta.7+-007ec6.svg)
+![PHP](https://img.shields.io/badge/php-7.1+-8892BF.svg)
+
 This plugins lets you create new fields of type 'Vimeo' in any extensions where custom fields are supported.
 
 Package contains following extensions:
