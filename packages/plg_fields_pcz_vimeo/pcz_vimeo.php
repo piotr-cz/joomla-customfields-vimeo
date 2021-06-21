@@ -223,17 +223,6 @@ class PlgFieldsPcz_Vimeo extends FieldsListPlugin
 			return null;
 		}
 
-		// Render as list on user profile, as it's most probably a data store (extra call to getOptionsFromField)
-		if ($context === 'com_users.user' && $field->type === static::TYPE_DEFAULT)
-		{
-			$path = JPluginHelper::getLayoutPath('fields', 'list', 'list');
-
-			ob_start();
-			include $path;
-
-			return ob_get_clean();
-		}
-
 		return parent::onCustomFieldsPrepareField($context, $item, $field);
 	}
 

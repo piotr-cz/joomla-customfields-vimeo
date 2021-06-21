@@ -9,13 +9,20 @@
 
 defined('_JEXEC') or die;
 
-if (!$field->value)
+$fieldValue = $field->value;
+
+if (empty($fieldValue))
 {
 	return;
 }
+
+$texts      = [];
+$options    = $this->getOptionsFromField($field);
 ?>
 <ul>
-	<?php foreach ((array) $field->value as $value) : ?>
-		<li><?php echo $value ?></li>
+	<?php foreach ($options as $value => $name) : ?>
+		<?php if (in_array((string) $value, $fieldValue)) : ?>
+			<li><?php echo $name ?></li>
+		<?php endif ?>
 	<?php endforeach ?>
 </ul>

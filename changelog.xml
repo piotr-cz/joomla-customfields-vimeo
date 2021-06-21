@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 	See https://docs.joomla.org/Adding_changelog_to_your_manifest_file
+	Available types: addition|change|remove|fix|security|language|note
 -->
 <changelogs>
 	<!-- Unreleased -->
@@ -8,6 +9,9 @@
 		<element>pkg_pcz_vimeo</element>
 		<type>package</type>
 		<version>99.0.0-alpha</version>
+		<fix>
+			<item>Fix data store layout (Fields plugin)</item>
+		</fix>
 	</changelog>
 	<!-- v1.0.0 -->
 	<changelog>
