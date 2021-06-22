@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fix data store layout (Fields plugin)
 
+### Changed
+- Use sha1 for media versions
+
 ## [1.0.0] - 2021-06-18
 ### Added
 - Initial release

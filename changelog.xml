@@ -12,6 +12,9 @@
 		<fix>
 			<item>Fix data store layout (Fields plugin)</item>
 		</fix>
+		<change>
+			<item>Use sha1 for media versions</item>
+		</change>
 	</changelog>
 	<!-- v1.0.0 -->
 	<changelog>
