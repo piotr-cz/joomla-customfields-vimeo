@@ -30,14 +30,16 @@
     "scripts": {
         "check": "phpcs --extensions=php -p --ignore=build,vendor,tmpl/* --standard=vendor/Joomla/coding-standards/Joomla .",
         "build": "composer archive",
-        "build-hashes": [
-            "composer archive --file plg_fields_pcz_vimeo --quiet",
-            "@php -r \"echo sprintf('sha384: %s', hash_file('sha384', 'build/plg_fields_pcz_vimeo.zip'));\""
+        "build-release-hashes": [
+            "composer archive --file pkg_pcz_vimeo --quiet",
+            "@php -r \"echo sprintf('sha384: %s', hash_file('sha384', 'build/pkg_pcz_vimeo.zip'));\""
         ],
         "update-hashes": "@php bin/update-hashes.php"
     },
     "scripts-descriptions": {
+        "check": "Check Joomla coding standard",
         "build": "Build release",
+        "build-release-hashes": "Build release hashes used in update manifest",
         "update-hashes": "Update media files hashes/ versions"
     },
     "config": {
