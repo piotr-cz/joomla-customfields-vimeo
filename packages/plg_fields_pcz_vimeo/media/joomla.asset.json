@@ -9,13 +9,13 @@
       "name": "plg_fields_pcz_vimeo.templates",
       "type": "style",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo.css",
-      "version": "1.0.0"
+      "version": "b5db833cd5e9910865adfa7ecd624754b6608293"
     },
     {
       "name": "plg_fields_pcz_vimeo.templates",
       "type": "script",
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo-es5.js",
-      "version": "1.0.0",
+      "version": "1ebe3f01635603e583d327a993f43180382b5801",
       "attributes": {
         "nomodule": true,
         "defer": true
