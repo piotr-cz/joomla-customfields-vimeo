@@ -33,10 +33,12 @@
         "build-hashes": [
             "composer archive --file plg_fields_pcz_vimeo --quiet",
             "@php -r \"echo sprintf('sha384: %s', hash_file('sha384', 'build/plg_fields_pcz_vimeo.zip'));\""
-        ]
+        ],
+        "update-hashes": "@php bin/update-hashes.php"
     },
     "scripts-descriptions": {
-        "build": "Build release"
+        "build": "Build release",
+        "update-hashes": "Update media files hashes/ versions"
     },
     "config": {
         "archive-format": "zip",

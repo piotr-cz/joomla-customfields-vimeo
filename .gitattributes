@@ -21,6 +21,9 @@
 # Artwork
 /artwork/ export-ignore
 
+# Executables
+/bin/ export-ignore
+
 /composer.json export-ignore
 /composer.lock export-ignore
 
