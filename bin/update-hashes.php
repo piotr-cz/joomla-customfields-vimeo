@@ -89,9 +89,9 @@ foreach (new GlobIterator($webAssetsGlob) as $fileInfo)
 	 * One should manually update layout files or use (deprected) MD5SUM file or backport web assets functionality
 	 */
 
-	// Update layout file
-	$layoutsGlob = sprintf('%s/packages/*/tmpl/*', $cwd);
+	$layoutsGlob = sprintf('%s/../tmpl/*.php', $fileInfo->getPath());
 
+	// Update layout files
 	foreach (new GlobIterator($layoutsGlob) as $fileInfo)
 	{
 		$fileObject = $fileInfo->openFile('r+');
