@@ -3,7 +3,7 @@
   "name": "plg_fields_pcz_vimeo",
   "version": "1.0.0",
   "description": "Pcz Vimeo",
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-3.0-or-later",
   "assets": [
     {
       "name": "plg_fields_pcz_vimeo.templates",
