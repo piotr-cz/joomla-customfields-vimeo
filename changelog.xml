@@ -16,7 +16,7 @@
 		<type>package</type>
 		<version>1.0.2</version>
 		<fix>
-			<item>Overlooked package version bump<item>
+			<item>Overlooked package version bump</item>
 		</fix>
 	</changelog>
 	<!-- v1.0.1 -->
