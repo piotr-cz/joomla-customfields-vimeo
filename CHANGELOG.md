@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2021-06-28
+### Fixed
+- Overlooked package version bump
+
 ## [1.0.1] - 2021-06-24
 ### Fixed
 - Fix data store layout (Fields plugin)
@@ -17,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/piotr-cz/joomla-customfields-vimeo/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/piotr-cz/joomla-customfields-vimeo/releases/tag/v1.0.0

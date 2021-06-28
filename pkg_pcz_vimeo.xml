@@ -2,7 +2,7 @@
 <extension type="package" version="3.7" method="upgrade">
 	<name>pkg_pcz_vimeo</name>
 	<packagename>pcz_vimeo</packagename>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<creationDate>May 2021</creationDate>
 	<author>Piotr Konieczny</author>
 	<copyright>Copyright (C) 2021 Piotr Konieczny. All rights reserved.</copyright>

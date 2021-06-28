@@ -10,6 +10,15 @@
 		<type>package</type>
 		<version>99.0.0-alpha</version>
 	</changelog>
+	<!-- v1.0.2 -->
+	<changelog>
+		<element>pkg_pcz_vimeo</element>
+		<type>package</type>
+		<version>1.0.2</version>
+		<fix>
+			<item>Overlooked package version bump<item>
+		</fix>
+	</changelog>
 	<!-- v1.0.1 -->
 	<changelog>
 		<element>pkg_pcz_vimeo</element>
