@@ -21,7 +21,7 @@
 		</tags>
 		<maintainer>Piotr Konieczny</maintainer>
 		<maintainerurl>https://piotr.cz</maintainerurl>
-		<targetplatform name="joomla" version="3\.(7|8|9)|4.0" />
+		<targetplatform name="joomla" version="3\.(7|8|9)|4\.0" />
 		<php_minimum>7.1.0</php_minimum>
 	</update>
 	<!-- Stable -->
