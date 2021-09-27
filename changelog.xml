@@ -9,6 +9,9 @@
 		<element>pkg_pcz_vimeo</element>
 		<type>package</type>
 		<version>99.0.0-alpha</version>
+		<fix>
+			<item>Vimeo hash on embeded player</item>
+		</fix>
 	</changelog>
 	<!-- v1.0.2 -->
 	<changelog>

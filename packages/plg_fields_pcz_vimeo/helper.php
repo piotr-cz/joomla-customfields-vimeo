@@ -20,7 +20,7 @@ class PlgFieldsPcz_VimeoHelper
 	 * Get Vimeo ID from URL
 	 *
 	 * @param   string  $fieldValue  Vimeo ID or Vimeo URL, ie 'https://vimeo.com/286898202'
-	 * @return  integer
+	 * @return  integer|null
 	 */
 	public static function getVimeoId(string $fieldValue): ?int
 	{
@@ -39,6 +39,25 @@ class PlgFieldsPcz_VimeoHelper
 		$urlPathParams = static::getVimeoPathParams($urlPath);
 
 		return $urlPathParams['vimeoId'];
+	}
+
+	/**
+	 * Get Vimeo hash parameter
+	 *
+	 * @param   string  $fieldValue  Vimeo hash
+	 * @return  string|null
+	 */
+	public static function getVimeoHash(string $fieldValue): ?string
+	{
+		if ($fieldValue == '')
+		{
+			return null;
+		}
+
+		$urlPath = parse_url($fieldValue, PHP_URL_PATH);
+		$urlPathParams = static::getVimeoPathParams($urlPath);
+
+		return $urlPathParams['unlistedHash'];
 	}
 
 	/**

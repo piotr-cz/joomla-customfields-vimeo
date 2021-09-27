@@ -31,8 +31,8 @@ JLoader::register('PlgFieldsPcz_VimeoHelper', __DIR__ . '/../helper.php');
  * @var  string $path                            Path to this layout file
  */
 
-/** @var string|null */
 $vimeoId = PlgFieldsPcz_VimeoHelper::getVimeoId($field->value);
+$vimeoHash = PlgFieldsPcz_VimeoHelper::getVimeoHash($field->value);
 
 if (!$vimeoId)
 {
@@ -45,6 +45,8 @@ $vimeoParams = PlgFieldsPcz_VimeoHelper::getVimeoParams($fieldParams);
 
 $vimeoSrc = new URI(sprintf('https://player.vimeo.com/video/%s', $vimeoId));
 $vimeoSrc->setQuery($vimeoParams);
+// Hash is required on embeded player since mid-2021, see https://vimeo.zendesk.com/hc/en-us/articles/4409305565069-Embedded-player-displays-This-video-does-not-exist-message
+$vimeoSrc->setVar('h', $vimeoHash);
 
 // Note: Assets are added to document during content events, even when layout is not displayed
 
