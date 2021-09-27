@@ -10,9 +10,9 @@
  * @see [Vimeo: oEmbed]{@link https://developer.vimeo.com/api/oembed}
  */
 
-use Joomla\CMS\Version;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Version;
 use Joomla\Uri\Uri;
 
 defined('_JEXEC') or die;

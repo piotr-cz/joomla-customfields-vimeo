@@ -7,10 +7,10 @@
  * @license     GNU General Public License version 3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-use Joomla\Registry\Registry;
-use Joomla\Uri\Uri;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Form\Rule\UrlRule;
+use Joomla\Registry\Registry;
+use Joomla\Uri\Uri;
 
 defined('_JEXEC') or die;
 

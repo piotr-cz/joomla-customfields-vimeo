@@ -13,8 +13,8 @@
  * use Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin;
  */
 
-use Joomla\CMS\Version;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Version;
 
 defined('_JEXEC') or die;
 
