@@ -16,48 +16,43 @@ use Joomla\Registry\Registry;
  */
 class PlgFieldsPcz_VimeoHelper
 {
+	public const VIMEO_ID = 'vimeoId';
+	public const VIMEO_HASH = 'unlistedHash';
+
 	/**
 	 * Get Vimeo ID from URL
 	 *
-	 * @param   string  $fieldValue  Vimeo ID or Vimeo URL, ie 'https://vimeo.com/286898202'
+	 * @param   string  $url  Vimeo URL, ie 'https://vimeo.com/286898202'
 	 * @return  integer|null
 	 */
-	public static function getVimeoId(string $fieldValue): ?int
+	public static function getVimeoId(string $url): ?int
 	{
-		if ($fieldValue == '')
+		if ($url == '')
 		{
 			return null;
 		}
 
-		// Legacy - allow Vimeo ID
-		if (is_numeric($fieldValue))
-		{
-			return $fieldValue;
-		}
+		$pathParams = static::getVimeoPathParams($url);
 
-		$urlPath = parse_url($fieldValue, PHP_URL_PATH);
-		$urlPathParams = static::getVimeoPathParams($urlPath);
-
-		return $urlPathParams['vimeoId'];
+		return $pathParams[static::VIMEO_ID];
 	}
 
 	/**
-	 * Get Vimeo hash parameter
+	 * Get Vimeo hash parameter from URL
 	 *
-	 * @param   string  $fieldValue  Vimeo hash
+	 * @param   string  $url  Vimeo URL
 	 * @return  string|null
 	 */
-	public static function getVimeoHash(string $fieldValue): ?string
+	public static function getVimeoHash(string $url): ?string
 	{
-		if ($fieldValue == '')
+		if ($url == '')
 		{
 			return null;
 		}
 
-		$urlPath = parse_url($fieldValue, PHP_URL_PATH);
-		$urlPathParams = static::getVimeoPathParams($urlPath);
+		$pathParams = static::getVimeoPathParams($url);
 
-		return $urlPathParams['unlistedHash'];
+		return $pathParams[static::VIMEO_HASH];
 	}
 
 	/**
@@ -128,11 +123,13 @@ class PlgFieldsPcz_VimeoHelper
 	 * Get Vimeo URL path parameters by detecting Vimeo URL scheme
 	 * @see https://developer.vimeo.com/api/oembed/videos#table-1
 	 *
-	 * @param   string  $urlPath  URL path component
+	 * @param   string  $url  URL
 	 * @return  array
 	 */
-	public static function getVimeoPathParams(string $urlPath): array
+	public static function getVimeoPathParams(string $url): array
 	{
+		$urlPath = parse_url($url, PHP_URL_PATH);
+
 		list ($firstSegment) = explode('/', ltrim($urlPath, '/'), 2);
 
 		switch ($firstSegment)
@@ -164,8 +161,8 @@ class PlgFieldsPcz_VimeoHelper
 		}
 
 		return [
-			'vimeoId' => $vimeoId,
-			'unlistedHash' => $unlistedHash,
+			static::VIMEO_ID => $vimeoId,
+			static::VIMEO_HASH => $unlistedHash,
 		];
 	}
 }

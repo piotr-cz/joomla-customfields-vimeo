@@ -90,10 +90,10 @@ class JFormRuleVimeoVideoLink extends UrlRule
 		}
 
 		// Path params
-		$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($uri->getPath());
+		$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams((string) $uri);
 
 		// Failed to parse format
-		if (!is_int($pathParams['vimeoId']))
+		if (!is_int($pathParams[PlgFieldsPcz_VimeoHelper::VIMEO_ID]))
 		{
 			return false;
 		}
@@ -143,10 +143,10 @@ class JFormRuleVimeoVideoLink extends UrlRule
 		$uri = new Uri($value);
 
 		// Extract Vimeo ID + Unlisted hash
-		$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($uri->getPath());
+		$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams((string) $uri);
 
 		// Failed to parse format
-		if (!is_int($pathParams['vimeoId']))
+		if (!is_int($pathParams[PlgFieldsPcz_VimeoHelper::VIMEO_ID]))
 		{
 			return null;
 		}

@@ -31,13 +31,15 @@ JLoader::register('PlgFieldsPcz_VimeoHelper', __DIR__ . '/../helper.php');
  * @var  string $path                            Path to this layout file
  */
 
-$vimeoId = PlgFieldsPcz_VimeoHelper::getVimeoId($field->value);
-$vimeoHash = PlgFieldsPcz_VimeoHelper::getVimeoHash($field->value);
-
-if (!$vimeoId)
+if ($field->value == '')
 {
 	return;
 }
+
+$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($field->value);
+
+$vimeoId = PlgFieldsPcz_VimeoHelper::getVimeoId($field->value);
+$vimeoHash = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($field->value);
 
 $document = $this->app->getDocument();
 
