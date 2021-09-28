@@ -36,10 +36,8 @@ if ($field->value == '')
 	return;
 }
 
-$pathParams = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($field->value);
-
 $vimeoId = PlgFieldsPcz_VimeoHelper::getVimeoId($field->value);
-$vimeoHash = PlgFieldsPcz_VimeoHelper::getVimeoPathParams($field->value);
+$vimeoHash = PlgFieldsPcz_VimeoHelper::getVimeoHash($field->value);
 
 $document = $this->app->getDocument();
 

@@ -9,6 +9,9 @@
 		<element>pkg_pcz_vimeo</element>
 		<type>package</type>
 		<version>99.0.0-alpha</version>
+		<fix>
+			<item>Using wrong methods in layout</item>
+		</fix>
 	</changelog>
 	<!-- v1.0.3 -->
 	<changelog>
