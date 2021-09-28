@@ -38,7 +38,7 @@ class PlgFieldsPcz_VimeoHelper
 	}
 
 	/**
-	 * Get Vimeo hash parameter from URL
+	 * Get Vimeo privacy hash parameter from URL
 	 *
 	 * @param   string  $url  Vimeo URL
 	 * @return  string|null
@@ -59,14 +59,16 @@ class PlgFieldsPcz_VimeoHelper
 	 * Get Vimeo parameters that may be used as video src query params
 	 *
 	 * @param   \Joomla\Registry\Registry  $fieldParams  Field parameters
+	 * @param   string                     $vimeoHash    Vimeo hash
 	 * @return  array
 	 *
 	 * @see [Vimeo: Using Player Parameters]{@link https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameters
 	 */
-	public static function getVimeoParams(Registry $fieldParams): array
+	public static function getVimeoParams(Registry $fieldParams, ?string $vimeoHash = null): array
 	{
 		// Default Vimeo player parameters
 		$defaultVimeoParams = [
+			'h'           => null,
 			'autopause'   => 1,
 			'autoplay'    => 0,
 			'background'  => 0,
@@ -89,6 +91,7 @@ class PlgFieldsPcz_VimeoHelper
 
 		// User defined Vimeo player parameters
 		$vimeoParams = [
+			'h'           => $vimeoHash,
 			'autopause'   => (int) $fieldParams->get('vp_autopause', 1),
 			'autoplay'    => (int) $fieldParams->get('vp_autoplay', 0),
 			'background'  => (int) $fieldParams->get('vp_background', 0),
