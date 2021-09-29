@@ -8,6 +8,8 @@
  */
 
 use Joomla\Registry\Registry;
+use Joomla\Uri\Uri;
+use Joomla\URI\UriInterface;
 
 /**
  * Helper for plg_fields_pcz_vimeo
@@ -38,21 +40,22 @@ class PlgFieldsPcz_VimeoHelper
 	}
 
 	/**
-	 * Get Vimeo privacy hash parameter from URL
+	 * Get Vimeo embeded player URL
 	 *
-	 * @param   string  $url  Vimeo URL
-	 * @return  string|null
+	 * @param   string                     $url          Vimeo URL
+	 * @param   \Joomla\Registry\Registry  $fieldParams  Field parameters
+	 * @return  \Joomla\Uri\UriInterface
 	 */
-	public static function getVimeoHash(string $url): ?string
+	public static function getEmbedSrc(string $url, Registry $fieldParams): UriInterface
 	{
-		if ($url == '')
-		{
-			return null;
-		}
-
 		$pathParams = static::getVimeoPathParams($url);
 
-		return $pathParams[static::VIMEO_HASH];
+		$vimeoParams = static::getVimeoParams($fieldParams, $pathParams[static::VIMEO_HASH]);
+
+		$vimeoSrc = new URI(sprintf('https://player.vimeo.com/video/%s', $pathParams[static::VIMEO_ID]));
+		$vimeoSrc->setQuery($vimeoParams);
+
+		return $vimeoSrc;
 	}
 
 	/**
@@ -64,7 +67,7 @@ class PlgFieldsPcz_VimeoHelper
 	 *
 	 * @see [Vimeo: Using Player Parameters]{@link https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameters
 	 */
-	public static function getVimeoParams(Registry $fieldParams, ?string $vimeoHash = null): array
+	protected static function getVimeoParams(Registry $fieldParams, ?string $vimeoHash = null): array
 	{
 		// Default Vimeo player parameters
 		$defaultVimeoParams = [

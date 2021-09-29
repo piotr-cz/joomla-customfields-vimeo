@@ -13,7 +13,6 @@
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Version;
-use Joomla\Uri\Uri;
 
 defined('_JEXEC') or die;
 
@@ -35,14 +34,6 @@ if ($field->value == '')
 {
 	return;
 }
-
-$vimeoId = PlgFieldsPcz_VimeoHelper::getVimeoId($field->value);
-$vimeoHash = PlgFieldsPcz_VimeoHelper::getVimeoHash($field->value);
-
-$vimeoParams = PlgFieldsPcz_VimeoHelper::getVimeoParams($fieldParams, $vimeoHash);
-
-$vimeoSrc = new URI(sprintf('https://player.vimeo.com/video/%s', $vimeoId));
-$vimeoSrc->setQuery($vimeoParams);
 
 // Note: Assets are added to document during content events, even when layout is not displayed
 $document = $this->app->getDocument();
@@ -81,7 +72,7 @@ $document->addScriptOptions(
 );
 
 $elementParams = [
-	'vimeoId' => $vimeoId,
+	'vimeoId' => PlgFieldsPcz_VimeoHelper::getVimeoId($field->value),
 	'logEnded' => (bool) $this->params->get('data_store'),
 ];
 ?>
@@ -89,7 +80,7 @@ $elementParams = [
 	<iframe
 		data-plg_fields_pcz_vimeo='<?php echo json_encode($elementParams) ?>'
 		class="pcz_vimeo-video__element"
-		src="<?php echo $vimeoSrc ?>"
+		src="<?php echo PlgFieldsPcz_VimeoHelper::getEmbedSrc($field->value, $fieldParams) ?>"
 		frameborder="0"
 		allow="autoplay; fullscreen; picture-in-picture"
 		allowfullscreen
