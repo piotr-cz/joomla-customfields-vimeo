@@ -59,6 +59,53 @@ class PlgFieldsPcz_VimeoHelper
 	}
 
 	/**
+	 * Get Vimeo URL path parameters by detecting Vimeo URL scheme
+	 * @see https://developer.vimeo.com/api/oembed/videos#table-1
+	 *
+	 * @param   string  $url  URL
+	 * @return  array
+	 */
+	public static function getVimeoPathParams(string $url): array
+	{
+		$urlPath = parse_url($url, PHP_URL_PATH);
+
+		list ($firstSegment) = explode('/', ltrim($urlPath, '/'), 2);
+
+		switch ($firstSegment)
+		{
+			// Showcase
+			case 'album':
+				list ($albumId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/album/%d/video/%d/%s');
+				break;
+
+			// Channel
+			case 'channels':
+				list ($channelId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/channels/%d/%d/%s');
+				break;
+
+			// Group
+			case 'groups':
+				list ($groupId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/groups/%d/videos/%d/%s');
+				break;
+
+			// On Demand video
+			case 'ondemand':
+				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/ondemand/%d/%d/%s');
+				break;
+
+			// A regular video
+			default:
+				list ($vimeoId, $unlistedHash) = sscanf($urlPath, '/%d/%s');
+				break;
+		}
+
+		return [
+			static::VIMEO_ID => $vimeoId,
+			static::VIMEO_HASH => $unlistedHash,
+		];
+	}
+
+	/**
 	 * Get Vimeo parameters that may be used as video src query params
 	 *
 	 * @param   \Joomla\Registry\Registry  $fieldParams  Field parameters
@@ -123,52 +170,5 @@ class PlgFieldsPcz_VimeoHelper
 			},
 			ARRAY_FILTER_USE_BOTH
 		);
-	}
-
-	/**
-	 * Get Vimeo URL path parameters by detecting Vimeo URL scheme
-	 * @see https://developer.vimeo.com/api/oembed/videos#table-1
-	 *
-	 * @param   string  $url  URL
-	 * @return  array
-	 */
-	public static function getVimeoPathParams(string $url): array
-	{
-		$urlPath = parse_url($url, PHP_URL_PATH);
-
-		list ($firstSegment) = explode('/', ltrim($urlPath, '/'), 2);
-
-		switch ($firstSegment)
-		{
-			// Showcase
-			case 'album':
-				list ($albumId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/album/%d/video/%d/%s');
-				break;
-
-			// Channel
-			case 'channels':
-				list ($channelId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/channels/%d/%d/%s');
-				break;
-
-			// Group
-			case 'groups':
-				list ($groupId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/groups/%d/videos/%d/%s');
-				break;
-
-			// On Demand video
-			case 'ondemand':
-				list ($ondemandId, $vimeoId, $unlistedHash) = sscanf($urlPath, '/ondemand/%d/%d/%s');
-				break;
-
-			// A regular video
-			default:
-				list ($vimeoId, $unlistedHash) = sscanf($urlPath, '/%d/%s');
-				break;
-		}
-
-		return [
-			static::VIMEO_ID => $vimeoId,
-			static::VIMEO_HASH => $unlistedHash,
-		];
 	}
 }
