@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die;
 
+/** @type string|string[] */
 $fieldValue = $field->value;
 
 if (empty($fieldValue))
@@ -16,6 +17,7 @@ if (empty($fieldValue))
 	return;
 }
 
+$fieldValue = (array) $fieldValue;
 $texts      = [];
 $options    = $this->getOptionsFromField($field);
 ?>
