@@ -17,7 +17,6 @@
       "uri": "plg_fields_pcz_vimeo/pcz_vimeo-es5.js",
       "version": "1ebe3f01635603e583d327a993f43180382b5801",
       "attributes": {
-        "nomodule": true,
         "defer": true
       },
       "dependencies": [
