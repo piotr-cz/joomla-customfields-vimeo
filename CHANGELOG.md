@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fix datastore items view when for in case of one value
 - J4: Fix assets loading
+- J3: Fix reference to asset
 
 ## [1.0.4] - 2021-09-28
 ### Fixed

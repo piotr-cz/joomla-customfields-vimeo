@@ -60,7 +60,7 @@ else
 	$document->addScript('https://player.vimeo.com/api/player.js', ['version' => null], ['defer' => true]);
 
 	HTMLHelper::_('stylesheet', 'plg_fields_pcz_vimeo/pcz_vimeo.css', ['version' => 'b5db833cd5e9910865adfa7ecd624754b6608293', 'relative' => true]);
-	HTMLHelper::_('script', 'plg_fields_pcz_vimeo/pcz_vimeo.es6.js', ['version' => '1ebe3f01635603e583d327a993f43180382b5801', 'relative' => true], ['defer' => true]);
+	HTMLHelper::_('script', 'plg_fields_pcz_vimeo/pcz_vimeo-es5.js', ['version' => '1ebe3f01635603e583d327a993f43180382b5801', 'relative' => true], ['defer' => true]);
 }
 
 // J!4 & J!3
