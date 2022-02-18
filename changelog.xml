@@ -9,6 +9,12 @@
 		<element>pkg_pcz_vimeo</element>
 		<type>package</type>
 		<version>99.0.0-alpha</version>
+	</changelog>
+	<!-- v1.0.5 -->
+	<changelog>
+		<element>pkg_pcz_vimeo</element>
+		<type>package</type>
+		<version>1.0.5</version>
 		<fix>
 			<item>Fix datastore items view when for in case of one value</item>
 			<item>Fix assets loading</item>
